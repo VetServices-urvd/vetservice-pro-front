@@ -1,16 +1,35 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserModule,  } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './lib/material/material.module';
+import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcription-vet-view.component';
+import { InscriptionCollabViewComponent } from './views/inscription-collab-view/inscription-collab-view.component';
+import { AuthentificationViewComponent } from './views/authentification-view/authentification-view.component';
+import { DefaultViewComponent } from './views/default-view/default-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SubcriptionVetViewComponent,
+    InscriptionCollabViewComponent,
+    AuthentificationViewComponent,
+    DefaultViewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,146 @@
+<mat-stepper class="content-sub" labelPosition="bottom" #stepper>
+  <mat-step [stepControl]="organizationStepForm">
+    <form [formGroup]="organizationStepForm" class="step">
+      <ng-template matStepLabel>Organisation</ng-template>
+      <fieldset>
+        <legend>Information sur l'entreprise</legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Intituler</mat-label>
+          <input matInput formControlName="intitule" required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="emailSociete" required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Code siret</mat-label>
+          <input matInput placeholder="13154121161" formControlName="code_siret" required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Code siren</mat-label>
+          <input matInput placeholder="846658" formControlName="code_siren" required>
+        </mat-form-field>
+      </fieldset>
+      <fieldset>
+        <legend>Informations bancaires</legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Coordonnée bancaire</mat-label>
+          <input matInput placeholder="" formControlName="coord_bank">
+        </mat-form-field>
+      </fieldset>
+
+      <div>
+        <button mat-button matStepperNext (click)="next(steps[0])" [disabled]="organizationStepForm.invalid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="lieuStepForm">
+    <form [formGroup]="lieuStepForm" class="step">
+      <ng-template matStepLabel>Etablissement</ng-template>
+      <fieldset>
+        <legend>Information sur la clinique</legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="adresse" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Telephone</mat-label>
+          <input matInput type="text" formControlName="telephone" placeholder="0678325879"
+                 required>
+        </mat-form-field>
+      </fieldset>
+      <fieldset>
+        <legend>Jours et heures d'ouverture</legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Disponibilité</mat-label>
+          <input matInput formControlName="disponibilite" placeholder=""
+                 required>
+        </mat-form-field>
+      </fieldset>
+
+      <div>
+        <button mat-button matStepperPrevious (click)="stepper.reset()">Back</button>
+        <button mat-button matStepperNext (click)="next(steps[1])" [disabled]="lieuStepForm.invalid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="userStepForm">
+    <form [formGroup]="userStepForm" class="step">
+      <ng-template matStepLabel>Compte</ng-template>
+      <fieldset>
+        <legend>Ajouter un compte en tant que administrateur</legend>
+        <mat-form-field appearance="fill">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom" placeholder="Ex. 1 Main St, New York, NY"
+                required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Prenom</mat-label>
+          <input matInput formControlName="prenom" placeholder="Ex. 1 Main St, New York, NY"
+                required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="emailPro" placeholder="Ex. 1 Main St, New York, NY"
+                required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Fonction</mat-label>
+          <mat-select formControlName="emailPro">
+            <mat-option value="Administrateur">Administrateur</mat-option>
+            <mat-option value="Docteur">Docteur</mat-option>
+            <mat-option value="Assistant">Assistant</mat-option>
+            <mat-option value="Secretaire">Secretaire</mat-option>
+          </mat-select>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Mot de passe confirmation</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp_confirm">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </fieldset>
+      <div>
+        <button mat-button matStepperPrevious (click)="stepper.reset()">Back</button>
+        <button mat-button matStepperNext (click)="next(steps[2])" [disabled]="userStepForm.invalid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="abonnementStepForm" >
+    <form [formGroup]="abonnementStepForm" class="step">
+      <ng-template matStepLabel>Abonnement</ng-template>
+      <fieldset>
+        <legend>Mode de paiement</legend>
+        <div>
+          <label style="margin-right:1%">Type de paiement:</label>
+          <mat-radio-group formControlName="type">
+            <mat-radio-button value="Mensuel" style="margin-right:1%">Mensuel</mat-radio-button>
+            <mat-radio-button value="Annuel" style="margin-right:1%">Annuel</mat-radio-button>
+          </mat-radio-group>
+        </div><br>
+        <mat-checkbox style="visibility:hidden" formControlName="paiement">Paiement validé</mat-checkbox>
+      </fieldset>
+      <div>
+        <button mat-button matStepperPrevious (click)="stepper.reset()">Back</button>
+        <button mat-button matStepperNext (click)="next(steps[3])" [disabled]="abonnementStepForm.invalid">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>fin</ng-template>
+
+    <div class="step">
+      <p>Votre souscription vetservices est terminé</p>
+      <button mat-button (click)="next(steps[4])">Terminer</button>
+    </div>
+  </mat-step>
+</mat-stepper>

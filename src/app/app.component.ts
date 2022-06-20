@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from './services/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vetservice-pro-front';
+  constructor(private navigationService: NavigationService){}
+  redirectTo(route: string) {
+    this.navigationService.navigateTo(route);
+  }
 }
