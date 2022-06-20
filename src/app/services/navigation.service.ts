@@ -14,8 +14,8 @@ export class NavigationService {
       case 'INSCRIPTION':
         this.router.navigate(['inscription']);
         break;
-      case 'CONNEXION':
-        this.router.navigate(['connexion']);
+      case 'CONNETION':
+        this.router.navigate(['authentification']);
         break;
       default:
         this.router.navigate([route]);

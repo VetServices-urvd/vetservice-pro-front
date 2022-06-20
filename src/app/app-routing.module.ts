@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcription-vet-view.component';
 import { InscriptionCollabViewComponent } from './views/inscription-collab-view/inscription-collab-view.component';
 import { DefaultViewComponent } from './views/default-view/default-view.component';
+import { AuthentificationViewComponent } from './views/authentification-view/authentification-view.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'authentification',
-    component: DefaultViewComponent,
+    component: AuthentificationViewComponent,
     pathMatch: 'full'
   },
   {

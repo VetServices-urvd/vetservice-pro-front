@@ -1,1 +1,48 @@
-<p>inscription-collab-view works!</p>
+<form [formGroup]="collabNewForm" class="form">
+  <ng-template matStepLabel>Compte</ng-template>
+  <fieldset>
+    <legend><h3>Ajouter un compte pour votre veterinaire</h3></legend>
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom"
+            required>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Prenom</mat-label>
+      <input matInput formControlName="prenom"
+            required>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="emailPro"
+            required>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Fonction</mat-label>
+      <mat-select formControlName="emailPro">
+        <!-- <mat-option value="Administrateur">Administrateur</mat-option> -->
+        <mat-option value="Docteur">Docteur</mat-option>
+        <mat-option value="Assistant">Assistant</mat-option>
+        <mat-option value="Secretaire">Secretaire</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe confirmation</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp_confirm">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </fieldset>
+  <div>
+    <button mat-button  (click)="collabNewForm.reset()">Back</button>
+    <button mat-button  (click)="send()" [disabled]="collabNewForm.invalid">Next</button>
+  </div>
+</form>

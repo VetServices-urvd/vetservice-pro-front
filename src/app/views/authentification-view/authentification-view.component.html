@@ -1,1 +1,42 @@
-<p>authentification-view works!</p>
+<form class="form" [formGroup]="connexionForm">
+  <fieldset>
+    <legend><h3>Connexion</h3></legend>
+    <div *ngIf="!organisationInitial; else InitiateOrga">
+      <mat-form-field appearance="fill" [matMenuTriggerFor]="menu">
+        <mat-label>Veterinare</mat-label>
+        <input matInput formControlName="vetName"
+              required>
+      </mat-form-field>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let vet of selectVets" (click)="ck_menu(vet)">
+          {{vet}}
+        </button>
+
+      </mat-menu>
+      <br>
+    </div>
+    <ng-template #InitiateOrga>
+      <h3>Veterinaire : {{organisationInitial}}</h3><br>
+    </ng-template>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email"
+            required>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="pswd">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </fieldset>
+  <div>
+    <button mat-button (click)="connexionForm.reset()">Effacer</button>
+    <button mat-button (click)="send()" [disabled]="connexionForm.invalid">Se connecter</button>
+  </div>
+  <div *ngIf="error">
+    <p class="error-txt"></p>
+  </div>
+</form>

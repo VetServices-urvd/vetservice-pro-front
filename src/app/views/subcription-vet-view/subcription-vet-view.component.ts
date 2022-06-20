@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { StepSubscription } from '../../models/common.model';
+import { NavigationService } from '../../services/navigation.service';
 @Component({
   selector: 'app-subcription-vet-view',
   templateUrl: './subcription-vet-view.component.html',
@@ -14,7 +15,8 @@ export class SubcriptionVetViewComponent implements OnInit {
   abonnementStepForm!: FormGroup;
   hide = true;
   steps: string[] =  ['ORGANISME', 'ETABLISSEMENT', 'COLLABORATEUR', 'SOUSCRIPTION', 'END']
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private navigationService: NavigationService) { }
 
   ngOnInit(): void {
     this.organizationStepForm = this.fb.group({
