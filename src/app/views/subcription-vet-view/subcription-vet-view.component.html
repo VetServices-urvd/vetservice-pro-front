@@ -54,7 +54,7 @@
         <legend>Jours et heures d'ouverture</legend>
         <mat-form-field appearance="fill">
           <mat-label>Disponibilité</mat-label>
-          <input matInput formControlName="disponibilite" placeholder=""
+          <input matInput formControlName="disponibilite"
                  required>
         </mat-form-field>
       </fieldset>
@@ -70,6 +70,14 @@
       <ng-template matStepLabel>Compte</ng-template>
       <fieldset>
         <legend>Ajouter un compte en tant que administrateur</legend>
+        <div>
+          <label style="margin-right:1%">civilite: </label>
+          <mat-radio-group formControlName="civilite">
+            <mat-radio-button value="Mr" style="margin-right:1%">Mr</mat-radio-button>
+            <mat-radio-button value="Mme" style="margin-right:1%">Mme</mat-radio-button>
+            <mat-radio-button value="Dr" style="margin-right:1%">Dr</mat-radio-button>
+          </mat-radio-group>
+        </div><br>
         <mat-form-field appearance="fill">
           <mat-label>Nom</mat-label>
           <input matInput formControlName="nom"
@@ -87,7 +95,7 @@
         </mat-form-field><br>
         <mat-form-field appearance="fill">
           <mat-label>Fonction</mat-label>
-          <mat-select formControlName="emailPro">
+          <mat-select formControlName="fonction">
             <mat-option value="Administrateur">Administrateur</mat-option>
             <mat-option value="Docteur">Docteur</mat-option>
             <mat-option value="Assistant">Assistant</mat-option>
@@ -103,15 +111,15 @@
         </mat-form-field><br>
         <mat-form-field appearance="fill">
           <mat-label>Mot de passe confirmation</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp_confirm">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="mdp_confirm">
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
       </fieldset>
       <div>
         <button mat-button matStepperPrevious (click)="stepper.reset()">Back</button>
-        <button mat-button matStepperNext (click)="next(steps[2])" [disabled]="userStepForm.invalid">Next</button>
+        <button mat-button matStepperNext (click)="next(steps[2])" [disabled]="userStepForm.invalid && !validPswd()">Next</button>
       </div>
     </form>
   </mat-step>

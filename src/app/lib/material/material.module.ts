@@ -11,7 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
@@ -33,6 +33,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule
-  ]
+  ],
+  // providers: [
+  //   {
+  //     provide: MAT_RADIO_DEFAULT_OPTIONS,
+  //     useValue: { color: 'yellow' },
+  //   }
+  // ]
 })
 export class MaterialModule { }

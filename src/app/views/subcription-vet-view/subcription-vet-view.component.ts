@@ -14,6 +14,7 @@ export class SubcriptionVetViewComponent implements OnInit {
   userStepForm!: FormGroup;
   abonnementStepForm!: FormGroup;
   hide = true;
+  hide2 = true;
   steps: string[] =  ['ORGANISME', 'ETABLISSEMENT', 'COLLABORATEUR', 'SOUSCRIPTION', 'END']
   constructor(private fb: FormBuilder,
     private navigationService: NavigationService) { }
@@ -49,8 +50,9 @@ export class SubcriptionVetViewComponent implements OnInit {
     });
   }
 
-  nextStep() {
-
+  validPswd():boolean{
+    return (this.userStepForm.controls['mdp'].valid && this.userStepForm.controls['mdp_confirm'].valid)
+     && (this.userStepForm.controls['mdp'].value ===  this.userStepForm.controls['mdp_confirm'].value);
   }
 
   next(step:StepSubscription | string) {
