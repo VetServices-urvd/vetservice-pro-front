@@ -11,9 +11,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [],
   imports: [
@@ -32,7 +33,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatStepperModule,
     MatSelectModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatListModule
   ],
   // providers: [
   //   {

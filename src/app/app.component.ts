@@ -7,9 +7,5 @@ import { NavigationService } from './services/navigation.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'vetservice-pro-front';
   constructor(private navigationService: NavigationService){}
-  redirectTo(route: string) {
-    this.navigationService.navigateTo(route);
-  }
 }

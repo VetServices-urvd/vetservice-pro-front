@@ -9,7 +9,7 @@ import { MaterialModule } from './lib/material/material.module';
 import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcription-vet-view.component';
 import { InscriptionCollabViewComponent } from './views/inscription-collab-view/inscription-collab-view.component';
 import { AuthentificationViewComponent } from './views/authentification-view/authentification-view.component';
-import { DefaultViewComponent } from './views/default-view/default-view.component';
+import { HeaderNavSideComponent } from './components/common/header-nav-side/header-nav-side.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { DefaultViewComponent } from './views/default-view/default-view.componen
     SubcriptionVetViewComponent,
     InscriptionCollabViewComponent,
     AuthentificationViewComponent,
-    DefaultViewComponent
+    HeaderNavSideComponent
   ],
   imports: [
     BrowserModule,

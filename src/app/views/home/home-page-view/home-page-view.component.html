@@ -1,0 +1,25 @@
+<mat-drawer-container class="home-container" autosize>
+  <mat-drawer #drawer class="home-sidenav" mode="side">
+    <h2>Menu</h2>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <!-- <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button> -->
+    <div *ngFor="let menuitem of menuitems; index as idx">
+      <button [ngClass]="!menuitem.selected?'side-menu-item':'item-focus'" mat-menu-item
+      (click)="menu_item_selection(menuitem)">
+        <mat-icon>{{menuitem.iconName}}</mat-icon>
+        <span>{{menuitem.title}}</span>
+      </button>
+      <mat-divider *ngIf="menuitem.endofCategorie"></mat-divider>
+    </div>
+  </mat-drawer>
+
+  <div class="home-sidenav-content">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon style="background-color:grey">arrow_left</mat-icon>
+    </button>
+  </div>
+  <router-outlet outlet></router-outlet>
+
+</mat-drawer-container>

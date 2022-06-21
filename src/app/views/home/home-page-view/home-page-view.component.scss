@@ -1,0 +1,30 @@
+.home-container {
+  //width: 500px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  overflow-y: hidden;
+  position: absolute;
+}
+
+.home-sidenav-content {
+  display: flex;
+  height: 100%;
+  //align-items: center;
+  //justify-content: center;
+}
+
+.home-sidenav {
+  padding: 20px;
+}
+.side-menu-item{
+  background-color: none;
+}
+.item-focus{
+  background-color: antiquewhite;
+}
+
+.side-menu-item:hover{
+  background-color: antiquewhite;
+}

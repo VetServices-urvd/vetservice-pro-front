@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute} from '@angular/router';
 import type { NavigationVal } from './../models/common.model'
 
 @Injectable({
@@ -7,18 +7,22 @@ import type { NavigationVal } from './../models/common.model'
 })
 export class NavigationService {
 
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute) { }
 
   navigateTo(route: NavigationVal | string) {
     switch(route) {
       case 'INSCRIPTION':
-        this.router.navigate(['inscription']);
+        this.router.navigate(['veterinaire/inscription']);
         break;
       case 'CONNETION':
-        this.router.navigate(['authentification']);
+        this.router.navigate(['veterinaire/authentification']);
+        break;
+      case 'HOME':
+        this.router.navigate(['veterinaire/home']);
         break;
       default:
-        this.router.navigate([route]);
+        this.router.navigate([route], {relativeTo: this.activatedRoute});
         break;
     }
   }
