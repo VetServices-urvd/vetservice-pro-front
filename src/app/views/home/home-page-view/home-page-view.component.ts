@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SideMenuItem } from '../../../models/common.model';
+import { SideMenuItem, LINKS } from '../../../models/common.model';
 import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
@@ -11,22 +11,35 @@ export class HomePageViewComponent implements OnInit {
   showFiller = false;
   current_menu_index = 0;
   menuitems:SideMenuItem[] = [
-    {num: 0, disable: false, title: "Gestion des collaborateurs",  iconName: "group", selected: true},
-    {num: 1, disable: false, title: "Gestions des cliniques", iconName: "health_and_safety", selected: false},
-    {num: 2, disable: false, title: "Compte et abonnement",iconName: "manage_accounts", selected: false, endofCategorie:true},
-    {num: 3, disable: false, title: "Gestion des rendez-vous",iconName: "edit_calendar", selected: false },
-    {num: 4, disable: false, title: "Vos catalogues produits",iconName: "medication", selected: false }
+    {num: 0, disable: false, title: "Gestion des collaborateurs",  iconName: "group", selected: true,
+      route: LINKS.collaborateur},
+    {num: 1, disable: false, title: "Gestions des cliniques", iconName: "health_and_safety", selected: false,
+    route: LINKS.clinique},
+    {num: 2, disable: false, title: "Compte et abonnement", iconName: "manage_accounts", selected: false, endofCategorie:true,
+    route: LINKS.compte_abonnement},
+    {num: 3, disable: false, title: "Gestion des rendez-vous", iconName: "edit_calendar", selected: false },
+    {num: 4, disable: false, title: "Vos catalogues produits", iconName: "medication", selected: false }
   ];
-  // DEFAULT_STYLE = {'background-color':'none'};
-  // SELECTED_STYLE = {background-color:'antiquewhite'};
 
   constructor(private navigationService: NavigationService) { }
 
   ngOnInit(): void {
+    let verifUrl: boolean | null = null;
+    const url_current:string = window.location.href;
+    this.menuitems.map(m => {
+      if(m.route && url_current.includes(m.route) && !m.selected && !m.disable) {
+        this.menuitems[this.current_menu_index].selected = false;
 
+        //update new
+        m.selected = true;
+        this.current_menu_index = m.num;
+      }
+    });
+
+    console.log("Menu state init: "+JSON.stringify(this.menuitems));
   }
 
-  menu_item_selection(menu: SideMenuItem){
+  menu_item_selection(menu: SideMenuItem) {
     if(menu.num === this.current_menu_index) return;
     // update last menu
     this.menuitems[this.current_menu_index].selected = false;

@@ -1,0 +1,19 @@
+<mat-card *ngIf="user" class="collab-me" >
+  <mat-card-header>
+    <mat-card-title>
+      <b>{{user.nom}}  {{user.prenom}}</b>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{user.fonction}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content style="margin-left:10px">
+    Role: {{ user.admin?'Administateur':'Utilisateur'}}<br>
+    Email: {{ user.emailPro }}
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <button mat-button (click)="launch('modification')" >Modification</button>
+    <button mat-button (click)="launch('supression')" disabled>Supression</button>
+  </mat-card-actions>
+</mat-card>

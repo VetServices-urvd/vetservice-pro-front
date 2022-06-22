@@ -23,7 +23,7 @@ const routesChilds: Routes = [
           pathMatch:'full'
         },
         {
-          path:'comptes&abonnement',
+          path:'compte&abonnement',
           component: CliniqueManagerViewComponent,
           pathMatch:'full'
         },

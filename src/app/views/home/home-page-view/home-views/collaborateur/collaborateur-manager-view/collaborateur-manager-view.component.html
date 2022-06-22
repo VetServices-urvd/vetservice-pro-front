@@ -1,1 +1,35 @@
-<p>collaborateur-manager-view works!</p>
+<div>
+  <div>
+    <h2 style="font-weight:bold">{{title}}</h2>
+  </div>
+  <fieldset>
+    <legend><h3>Votre identité</h3></legend>
+    <ng-container [ngSwitch]="user_mode">
+      <home-collaborateur-consult
+        *ngSwitchCase="'consultation'"
+        (ope)="getMode($event)"
+        [user]="user">
+      </home-collaborateur-consult>
+      <div *ngSwitchCase="'modification'">Modification</div>
+      <div *ngSwitchCase="'supression'">Supression</div>
+    </ng-container>
+  </fieldset>
+
+  <fieldset>
+    <legend><h3>Autres collaborateurs</h3></legend>
+    <mat-list>
+      <mat-list-item *ngFor="let collab of collabsGestion; index as i">
+        <ng-container [ngSwitch]="collab.mode">
+          <home-collaborateur-consult
+            *ngSwitchCase="'consultation'"
+            (ope)="getMode2($event, i)"
+            [user]="collab.model">
+          </home-collaborateur-consult>
+          <div *ngSwitchCase="'modification'">Modification</div>
+          <div *ngSwitchCase="'supression'">Supression</div>
+        </ng-container>
+      </mat-list-item>
+    </mat-list>
+  </fieldset>
+
+</div>

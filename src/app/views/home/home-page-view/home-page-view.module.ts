@@ -7,6 +7,7 @@ import { MaterialModule } from '../../../lib/material/material.module';
 import { CollaborateurManagerViewComponent } from './home-views/collaborateur/collaborateur-manager-view/collaborateur-manager-view.component';
 import { CliniqueManagerViewComponent } from './home-views/clinique/clinique-manager-view/clinique-manager-view.component';
 import { CompteAbonnementViewComponent } from './home-views/compte/compte-abonnement-view/compte-abonnement-view.component';
+import { CollaborateurConsultComponent } from '../../../components/collaborateur/collaborateur-consult/collaborateur-consult.component';
 
 
 
@@ -16,7 +17,8 @@ import { CompteAbonnementViewComponent } from './home-views/compte/compte-abonne
     DefaultViewComponent,
     CollaborateurManagerViewComponent,
     CliniqueManagerViewComponent,
-    CompteAbonnementViewComponent
+    CompteAbonnementViewComponent,
+    CollaborateurConsultComponent
   ],
   imports: [
     CommonModule,

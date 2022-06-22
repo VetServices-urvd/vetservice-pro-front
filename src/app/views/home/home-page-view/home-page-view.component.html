@@ -14,12 +14,14 @@
       <mat-divider *ngIf="menuitem.endofCategorie"></mat-divider>
     </div>
   </mat-drawer>
-
   <div class="home-sidenav-content">
     <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon style="background-color:grey">arrow_left</mat-icon>
     </button>
   </div>
-  <router-outlet outlet></router-outlet>
+  <div class="home-views">
+    <router-outlet></router-outlet>
+  </div>
+
 
 </mat-drawer-container>
