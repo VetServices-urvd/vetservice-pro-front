@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 import { NavigationService } from './services/navigation.service';
 
 @Component({
@@ -7,5 +8,12 @@ import { NavigationService } from './services/navigation.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private navigationService: NavigationService){}
+  constructor(private primengConfig: PrimeNGConfig,
+    private navigationService: NavigationService){}
+
+
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+  }
+
 }

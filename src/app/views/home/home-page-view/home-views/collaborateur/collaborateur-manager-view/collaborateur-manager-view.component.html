@@ -2,34 +2,76 @@
   <div>
     <h2 style="font-weight:bold">{{title}}</h2>
   </div>
-  <fieldset>
+  <fieldset [ngSwitch]="user_mode">
     <legend><h3>Votre identité</h3></legend>
-    <ng-container [ngSwitch]="user_mode">
-      <home-collaborateur-consult
-        *ngSwitchCase="'consultation'"
+    <div  *ngSwitchCase="'consultation'">
+        <home-collaborateur-consult
+
+          (ope)="getMode($event)"
+          [user]="user">
+        </home-collaborateur-consult>
+
+    </div>
+    <div *ngSwitchCase="'modification'">
+      <home-collaborateur-modif
         (ope)="getMode($event)"
-        [user]="user">
-      </home-collaborateur-consult>
-      <div *ngSwitchCase="'modification'">Modification</div>
-      <div *ngSwitchCase="'supression'">Supression</div>
-    </ng-container>
+        [collaborateur]="user">
+      </home-collaborateur-modif>
+
+    </div>
+    <div *ngSwitchCase="'supression'">
+    </div>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput
+            required>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Prenom</mat-label>
+      <input matInput
+            required>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email"
+            required>
+    </mat-form-field><br> -->
   </fieldset>
 
   <fieldset>
     <legend><h3>Autres collaborateurs</h3></legend>
-    <mat-list>
-      <mat-list-item *ngFor="let collab of collabsGestion; index as i">
-        <ng-container [ngSwitch]="collab.mode">
-          <home-collaborateur-consult
-            *ngSwitchCase="'consultation'"
-            (ope)="getMode2($event, i)"
-            [user]="collab.model">
-          </home-collaborateur-consult>
-          <div *ngSwitchCase="'modification'">Modification</div>
-          <div *ngSwitchCase="'supression'">Supression</div>
-        </ng-container>
-      </mat-list-item>
-    </mat-list>
+    <div *ngFor="let collab of collabsGestion; index as i">
+      <ng-container [ngSwitch]="collab.mode">
+        <home-collaborateur-consult
+          *ngSwitchCase="'consultation'"
+          (ope)="getMode2($event, i)"
+          [user]="collab.model">
+        </home-collaborateur-consult>
+        <!-- <div *ngSwitchCase="'modification'"> -->
+          <home-collaborateur-modif
+          *ngSwitchCase="'modification'"
+          (ope)="getMode2($event, i)"
+          [collaborateur]="collab.model">
+        </home-collaborateur-modif>
+        <!-- </div> -->
+        <div *ngSwitchCase="'supression'" (load)="openForDelete(content)">
+
+        </div>
+      </ng-container>
+    </div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-basic-title">Supprimer ce compte utilisateur</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('NO_ACTION')"></button>
+      </div>
+      <div class="modal-body">
+       <h4><b>Etes vous sur de vouloir supprimer ce compte ?</b></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('DELETE_CONFIRM')">Supprimer</button>
+      </div>
+    </ng-template>
   </fieldset>
+
 
 </div>

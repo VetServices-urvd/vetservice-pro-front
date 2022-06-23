@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule,  } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,8 @@ import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcri
 import { InscriptionCollabViewComponent } from './views/inscription-collab-view/inscription-collab-view.component';
 import { AuthentificationViewComponent } from './views/authentification-view/authentification-view.component';
 import { HeaderNavSideComponent } from './components/common/header-nav-side/header-nav-side.component';
+import { PrimengModule } from './lib/primeng/primeng.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,12 @@ import { HeaderNavSideComponent } from './components/common/header-nav-side/head
     SubcriptionVetViewComponent,
     InscriptionCollabViewComponent,
     AuthentificationViewComponent,
-    HeaderNavSideComponent
+    HeaderNavSideComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -29,8 +32,10 @@ import { HeaderNavSideComponent } from './components/common/header-nav-side/head
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    PrimengModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

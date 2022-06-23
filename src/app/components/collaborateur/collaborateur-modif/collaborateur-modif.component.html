@@ -1,0 +1,66 @@
+<form [formGroup]="collabModifyForm" class="collab-modif">
+  <div style="background-color: white; display: flex; gap: 10px; justify-content: space-evenly">
+    <div>
+      <button mat-button class="primary-color-btn"
+      (click)="launch('consultation')" >Consultation</button>
+    </div>
+    <div>
+      <button mat-button class="primary-color-btn"
+      (click)="launch('supression')">Supression</button>
+    </div>
+
+  </div><br>
+
+  <div style="background-color: white;display: flow-root; padding-left:20px">
+    <div class="modif-block-identity">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Prenom</mat-label>
+          <input matInput formControlName="prenom">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div>
+      <mat-checkbox formControlName="admin">Activer droit admin</mat-checkbox>
+    </div><br>
+    <div style="display:flex;flex-direction:column;flex-wrap:wrap; flex-flow: column wrap;">
+      <div style="flex-shrink:10;">
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe à confirmé</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="mdp_confirm">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div  style="flex-shrink:10;">
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe à changer</mat-label>
+          <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="mdp_change">
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div>
+      <button mat-button color="grey" (click)="collabModifyForm.reset()">Effacer</button>
+      <button mat-button color="grey" (click)="send()" [disabled]="false">S'inscrire</button>
+    </div>
+  </div>
+
+</form>

@@ -1,5 +1,4 @@
 <form [formGroup]="collabNewForm" class="form">
-  <ng-template matStepLabel>Compte</ng-template>
   <fieldset>
     <legend><h3>Ajouter un compte pour votre veterinaire</h3></legend>
     <div>
@@ -27,7 +26,7 @@
     </mat-form-field><br>
     <mat-form-field appearance="fill">
       <mat-label>Fonction</mat-label>
-      <mat-select formControlName="emailPro">
+      <mat-select formControlName="fonction">
         <!-- <mat-option value="Administrateur">Administrateur</mat-option> -->
         <mat-option value="Docteur" selected>Docteur</mat-option>
         <mat-option value="Assistant">Assistant</mat-option>

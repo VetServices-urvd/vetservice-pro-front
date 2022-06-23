@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
@@ -39,11 +39,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatGridListModule
   ],
-  // providers: [
-  //   {
-  //     provide: MAT_RADIO_DEFAULT_OPTIONS,
-  //     useValue: { color: 'yellow' },
-  //   }
-  // ]
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+    // {
+    //   provide: MAT_RADIO_DEFAULT_OPTIONS,
+    //   useValue: { color: 'yellow' },
+    // }
+  ]
 })
 export class MaterialModule { }
