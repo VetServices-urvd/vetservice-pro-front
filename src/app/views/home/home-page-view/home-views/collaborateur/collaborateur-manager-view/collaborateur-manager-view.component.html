@@ -4,9 +4,8 @@
   </div>
   <fieldset [ngSwitch]="user_mode">
     <legend><h3>Votre identité</h3></legend>
-    <div  *ngSwitchCase="'consultation'">
+    <div *ngSwitchCase="'consultation'">
         <home-collaborateur-consult
-
           (ope)="getMode($event)"
           [user]="user">
         </home-collaborateur-consult>
@@ -19,23 +18,12 @@
       </home-collaborateur-modif>
 
     </div>
-    <div *ngSwitchCase="'supression'">
+    <div *ngSwitchDefault>
+      <home-collaborateur-consult
+          (ope)="getMode($event)"
+          [user]="user">
+        </home-collaborateur-consult>
     </div>
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Nom</mat-label>
-      <input matInput
-            required>
-    </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>Prenom</mat-label>
-      <input matInput
-            required>
-    </mat-form-field><br>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput type="email"
-            required>
-    </mat-form-field><br> -->
   </fieldset>
 
   <fieldset>
@@ -44,34 +32,25 @@
       <ng-container [ngSwitch]="collab.mode">
         <home-collaborateur-consult
           *ngSwitchCase="'consultation'"
+          [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
           [user]="collab.model">
         </home-collaborateur-consult>
         <!-- <div *ngSwitchCase="'modification'"> -->
-          <home-collaborateur-modif
+        <home-collaborateur-modif
           *ngSwitchCase="'modification'"
+          [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
           [collaborateur]="collab.model">
         </home-collaborateur-modif>
         <!-- </div> -->
-        <div *ngSwitchCase="'supression'" (load)="openForDelete(content)">
-
-        </div>
+        <home-collaborateur-consult
+          [enable_allowed]="user.admin"
+          (ope)="getMode2($event, i)"
+          [user]="collab.model"
+          *ngSwitchDefault>
+        </home-collaborateur-consult>
       </ng-container>
     </div>
-    <ng-template #content let-modal>
-      <div class="modal-header">
-        <h3 class="modal-title" id="modal-basic-title">Supprimer ce compte utilisateur</h3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('NO_ACTION')"></button>
-      </div>
-      <div class="modal-body">
-       <h4><b>Etes vous sur de vouloir supprimer ce compte ?</b></h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('DELETE_CONFIRM')">Supprimer</button>
-      </div>
-    </ng-template>
   </fieldset>
-
-
 </div>

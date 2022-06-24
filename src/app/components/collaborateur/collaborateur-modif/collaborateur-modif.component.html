@@ -1,14 +1,21 @@
 <form [formGroup]="collabModifyForm" class="collab-modif">
-  <div style="background-color: white; display: flex; gap: 10px; justify-content: space-evenly">
+  <div class="modif-block-btn">
     <div>
       <button mat-button class="primary-color-btn"
-      (click)="launch('consultation')" >Consultation</button>
+      (click)="launch('consultation')">Consultation</button>
     </div>
-    <div>
-      <button mat-button class="primary-color-btn"
-      (click)="launch('supression')">Supression</button>
+    <div >
+      <button mat-button *ngIf="!enable_allowed; else Allowed"
+      class="primary-color-btn"
+      (click)="launch('supression')"
+      disabled>Supression</button>
     </div>
-
+    <ng-template #Allowed>
+      <!-- <div> -->
+        <button mat-button class="primary-color-btn"
+        (click)="launch('supression')">Supression</button>
+      <!-- </div> -->
+    </ng-template>
   </div><br>
 
   <div style="background-color: white;display: flow-root; padding-left:20px">
@@ -57,9 +64,15 @@
       </div>
     </div>
 
-    <div>
-      <button mat-button color="grey" (click)="collabModifyForm.reset()">Effacer</button>
-      <button mat-button color="grey" (click)="send()" [disabled]="false">S'inscrire</button>
+    <div style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
+      <button mat-button color="grey"
+        class="secondary-color-btn"
+        style="align-self:flex-start;flex-basis:auto;"
+        (click)="collabModifyForm.reset()">Effacer</button>
+      <button mat-button color="grey"
+        class="secondary-color-btn"
+        style="align-self:flex-end; flex-basis:auto;"
+        (click)="send()" [disabled]="false">S'inscrire</button>
     </div>
   </div>
 

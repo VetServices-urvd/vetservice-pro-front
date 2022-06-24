@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class CollaborateurModifComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
-
+  @Input() enable_allowed = true;
   @Input() collaborateur: Collaborateur = <Collaborateur>{};
   @Output() ope: EventEmitter<GestionMode> = new EventEmitter<GestionMode>();
   hide = true;

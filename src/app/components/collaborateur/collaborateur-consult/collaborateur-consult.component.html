@@ -1,21 +1,44 @@
 <mat-card *ngIf="user" class="collab-consult" >
-  <mat-card-header>
-    <mat-card-title>
-      <b>{{user.nom}}  {{user.prenom}}</b>
-    </mat-card-title>
-    <mat-card-subtitle>
-      {{user.fonction}}
-    </mat-card-subtitle>
+  <mat-card-header
+  style="display:flex;flex-direction:row;justify-content:center;flex-wrap:wrap;gap:10px 30px;">
+    <div>
+      <mat-card-title>
+        <b>{{user.nom}}  {{user.prenom}}</b>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{user.fonction}}
+      </mat-card-subtitle>
+    </div>
+    <div>
+      Compte: {{ user.emailPro }}
+    </div>
+    <div>
+      <i>{{ user.admin?'(Administateur)':'(Utilisateur)'}}</i>
+    </div>
   </mat-card-header>
-  <mat-card-content style="margin-left:10px">
-    Role: {{ user.admin?'Administateur':'Utilisateur'}}<br>
-    Email: {{ user.emailPro }}
-  </mat-card-content>
   <mat-divider inset></mat-divider>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="!enable_allowed; else Allowed"
+    style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
     <button mat-button class="primary-color-btn"
-      (click)="launch('modification')">Modification</button>
-    <button mat-button class="primary-color-btn"
-      (click)="launch('supression')">Supression</button>
+      style="align-self:flex-start;"
+      (click)="launch('modification')"
+      disabled>Modification</button>
+    <button mat-button
+    style="align-self:flex-end;"
+    class="primary-color-btn"
+      (click)="launch('supression')"
+      disabled>Supression</button>
   </mat-card-actions>
+  <ng-template #Allowed>
+    <mat-card-actions
+      style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
+      <button mat-button class="primary-color-btn"
+        style="align-self:flex-start;"
+        (click)="launch('modification')">Modification</button>
+      <button mat-button
+      style="align-self:flex-end;"
+      class="primary-color-btn"
+        (click)="launch('supression')">Supression</button>
+    </mat-card-actions>
+  </ng-template>
 </mat-card>

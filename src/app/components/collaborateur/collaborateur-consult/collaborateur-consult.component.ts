@@ -8,6 +8,7 @@ import { GestionMode } from '../../../models/common.model';
   styleUrls: ['./collaborateur-consult.component.scss']
 })
 export class CollaborateurConsultComponent implements OnInit {
+  @Input() enable_allowed: boolean = true;
   @Input() user: Collaborateur = <Collaborateur>{};
   @Output() ope: EventEmitter<GestionMode> = new EventEmitter<GestionMode>();
   constructor() { }
