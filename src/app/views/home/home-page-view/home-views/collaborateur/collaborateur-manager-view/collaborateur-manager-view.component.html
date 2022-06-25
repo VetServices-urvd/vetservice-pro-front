@@ -26,7 +26,7 @@
     </div>
   </fieldset>
 
-  <fieldset>
+  <fieldset *ngIf="collabsGestion && collabsGestion.length > 0;else NoAutre">
     <legend><h3>Autres collaborateurs</h3></legend>
     <div *ngFor="let collab of collabsGestion; index as i">
       <ng-container [ngSwitch]="collab.mode">
@@ -53,4 +53,13 @@
       </ng-container>
     </div>
   </fieldset>
+  <ng-template #NoAutre>
+    <fieldset>
+      <legend><h3>Autres collaborateurs</h3></legend>
+      <div>
+        <h2>Aucun autre collaborateur n'est disponible.</h2>
+      </div>
+    </fieldset>
+
+  </ng-template>
 </div>

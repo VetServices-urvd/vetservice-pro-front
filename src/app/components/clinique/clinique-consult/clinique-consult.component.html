@@ -1,0 +1,48 @@
+<mat-card *ngIf="clinique" class="clinique-consult" >
+  <!-- <mat-card-header
+  style="display:flex;flex-direction:row;justify-content:center;flex-wrap:wrap;gap:10px 30px;">
+  <mat-card-subtitle>
+    <i>{{ enable_allowed?'(Administateur)':'(Utilisateur)'}}</i></mat-card-subtitle>
+  </mat-card-header> -->
+  <mat-list style="margin-bottom:4%;padding-bottom:4%;">
+    <mat-list-item>
+      <mat-icon matListIcon>pin_drop</mat-icon>
+      <h4 matLine><b><i>{{clinique.adresse}}</i></b></h4>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>call</mat-icon>
+      <h4 matLine><i>{{clinique.tel}}</i></h4>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>view_agenda</mat-icon>
+     <p matLine><u>Disponiblite:</u>
+       <br>L-M-Mr-J-V de 9:00 - 17:00 <br> S de 9:00 - 13:00</p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-divider inset></mat-divider>
+  <mat-card-actions *ngIf="!enable_allowed; else Allowed"
+    style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
+    <button mat-button class="primary-color-btn"
+      style="align-self:flex-start;"
+      (click)="launch('modification')"
+      disabled>Modification</button>
+    <button mat-button
+    style="align-self:flex-end;"
+    class="primary-color-btn"
+      (click)="launch('supression')"
+      disabled>Supression</button>
+  </mat-card-actions>
+  <ng-template #Allowed>
+    <mat-card-actions
+      style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
+      <button mat-button class="primary-color-btn"
+        style="align-self:flex-start;"
+        (click)="launch('modification')">Modification</button>
+      <button mat-button
+      style="align-self:flex-end;"
+      class="primary-color-btn"
+        (click)="launch('supression')">Supression</button>
+    </mat-card-actions>
+  </ng-template>
+</mat-card>

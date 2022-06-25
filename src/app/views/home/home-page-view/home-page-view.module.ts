@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from '../../../lib/primeng/primeng.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CliniqueModifComponent } from '../../../components/clinique/clinique-modif/clinique-modif.component';
+import { CliniqueConsultComponent } from '../../../components/clinique/clinique-consult/clinique-consult.component';
+import { CollaborateurSupprimeAlertComponent } from '../../../components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
 
 
 
@@ -24,7 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CliniqueManagerViewComponent,
     CompteAbonnementViewComponent,
     CollaborateurConsultComponent,
-    CollaborateurModifComponent
+    CollaborateurModifComponent,
+    CollaborateurSupprimeAlertComponent,
+    CliniqueConsultComponent,
+    CliniqueModifComponent,
   ],
   imports: [
     CommonModule,

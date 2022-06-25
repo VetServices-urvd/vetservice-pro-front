@@ -21,10 +21,10 @@ export class CollaborateurManagerViewComponent implements OnInit {
     this.user = {civilite: "Mr", nom:"ST-VINCHEN", prenom: "Patrick", emailPro:"oiu@oiu.oiu",
       fonction:"Assistant", admin: true }
 
-    this.collabsGestion.push({mode:'consultation', model:
-      {civilite: "Mr", nom:"Walls", prenom: "Goerge", emailPro:"gwalls@email.eu",
-      fonction:"Docteur", admin: true }
-    });
+    // this.collabsGestion.push({mode:'consultation', model:
+    //   {civilite: "Mr", nom:"Walls", prenom: "Goerge", emailPro:"gwalls@email.eu",
+    //   fonction:"Docteur", admin: true }
+    // });
     console.log("COLLAB AUTRE: " + JSON.stringify(this.collabsGestion));
   }
 

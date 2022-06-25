@@ -12,7 +12,6 @@ import { AuthentificationViewComponent } from './views/authentification-view/aut
 import { HeaderNavSideComponent } from './components/common/header-nav-side/header-nav-side.component';
 import { PrimengModule } from './lib/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
-import { CollaborateurSupprimeAlertComponent } from './components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { CollaborateurSupprimeAlertComponent } from './components/collaborateur/
     SubcriptionVetViewComponent,
     InscriptionCollabViewComponent,
     AuthentificationViewComponent,
-    HeaderNavSideComponent,
-    CollaborateurSupprimeAlertComponent,
+    HeaderNavSideComponent
   ],
   imports: [
     BrowserModule,
