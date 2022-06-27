@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CliniqueModifComponent } from '../../../components/clinique/clinique-modif/clinique-modif.component';
 import { CliniqueConsultComponent } from '../../../components/clinique/clinique-consult/clinique-consult.component';
 import { CollaborateurSupprimeAlertComponent } from '../../../components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
+import { DisponibliteFormComponent } from '../../../components/clinique/disponiblite-form/disponiblite-form.component';
+import { AdresseFormComponent } from '../../../components/clinique/adresse-form/adresse-form.component';
 
 
 
@@ -31,6 +33,8 @@ import { CollaborateurSupprimeAlertComponent } from '../../../components/collabo
     CollaborateurSupprimeAlertComponent,
     CliniqueConsultComponent,
     CliniqueModifComponent,
+    DisponibliteFormComponent,
+    AdresseFormComponent
   ],
   imports: [
     CommonModule,

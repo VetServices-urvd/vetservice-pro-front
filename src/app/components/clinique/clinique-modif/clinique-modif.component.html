@@ -1,1 +1,111 @@
-<p>clinique-modif works!</p>
+<div class="clinique-modif">
+  <div class="modif-block-btn">
+    <div>
+      <button mat-button class="primary-color-btn"
+      (click)="launch('consultation')">Consultation</button>
+    </div>
+    <div>
+      <button mat-button *ngIf="!enable_allowed; else Allowed"
+      class="primary-color-btn"
+      (click)="launch('supression')"
+      disabled>Supression</button>
+    </div>
+    <ng-template #Allowed>
+      <!-- <div> -->
+        <button mat-button class="primary-color-btn"
+        (click)="launch('supression')">Supression</button>
+      <!-- </div> -->
+    </ng-template>
+  </div><br>
+
+  <div style="background-color: white;display: flow-root; padding-left:20px">
+    <div class="modif-block-cli">
+      <div style="display:flex; flex-direction:column;gap: 5px 5px">
+        <mat-form-field appearance="fill">
+          <mat-label>Telephone</mat-label>
+          <input matInput [(ngModel)]="new_clinique.tel">
+        </mat-form-field>
+        <button mat-button
+        class="secondary-color-btn"
+        style="align-self:flex-end; flex-basis:auto;"
+        (click)="sendDispo()" [disabled]="false">Modifier</button>
+      </div>
+      <div>
+        <p-fieldset legend="Adresse" [toggleable]="true">
+          <div class="field">
+            <div class="p-input-filled">
+              <label for="voie">Voie</label>
+              <input id="voie" type="text" class="p-inputtext-sm"
+              pInputText [(ngModel)]="adresseGet.voie" />
+            </div>
+            <div class="p-input-filled">
+              <label for="nvoie">Nom de voie</label>
+              <input id="nvoie" type="text" class="p-inputtext-sm"
+              pInputText [(ngModel)]="adresseGet.nomVoie" required/>
+            </div>
+            <div class="p-input-outlined">
+              <label for="complement">Complément</label>
+              <input id="complement" type="text" class="p-inputtext-sm"
+              pInputText [(ngModel)]="adresseGet.complement" required/>
+            </div>
+            <div class="p-input-filled">
+              <label for="cpostal">Code postale</label>
+              <input id="cpostal" type="text" class="p-inputtext-sm"
+              pInputText [(ngModel)]="adresseGet.codePostal" />
+            </div>
+            <div class="p-input-filled">
+              <label for="ville">Ville</label>
+              <input id="ville" type="text" class="p-inputtext-sm"
+              pInputText [(ngModel)]="adresseGet.ville" />
+            </div>
+            <div>
+              <button mat-button
+              class="secondary-color-btn"
+              style="align-self:flex-end; flex-basis:auto;"
+              (click)="sendAdresse()" [disabled]="!adresseChanged()">Modifier</button>
+            </div>
+          </div>
+        </p-fieldset>
+      </div>
+      <div>
+        <p-fieldset legend="Disponibilité" [toggleable]="true">
+          <div style="display:flex;flex-direction:row;flex-wrap:wrap; gap:12px 12px;">
+            <div *ngFor="let day of availableDays" >
+              <div >
+                <p-chip pDraggable="days" (onDragStart)="dragStart(day)" (onDragEnd)="dragEnd()" [label]="day"></p-chip>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngFor="let dispo of dispos.dispos; index as i" style="row-gap: 10px;">Jours dispo {{i+1}}
+            <p-chips  pDroppable="days" (onDrop)="drop($event)" [(ngModel)]="selectedDays"  [allowDuplicate]="false" [max]="7"
+            (onRemove)="getremoval($event)"  (onAdd)="update(selectedDays[selectedDays.length-1])">
+              <!-- <ng-template let-day pTemplate="day">
+                {{day}}
+              </ng-template> -->
+            </p-chips>
+            <div class="col-12 md:col-6 lg:col-4">
+              <span>Plage horaire {{i+1}}</span>
+              <p-inputMask mask="99:99" [(ngModel)]="dispo.hDebut" placeholder="06:00"></p-inputMask>
+              <p-inputMask mask="99:99" [(ngModel)]="dispo.hFin" placeholder="17:45"></p-inputMask>
+            </div>
+          </div>
+
+          <button mat-button
+          class="secondary-color-btn"
+          style="align-self:flex-end; flex-basis:auto;"
+          (click)="sendDispo()" [disabled]="false">Modifier</button>
+        </p-fieldset>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;margin-top:2%">
+      <!-- <button mat-button color="grey"
+        class="secondary-color-btn"
+        style="align-self:flex-start;flex-basis:auto;"
+        (click)="reset()">Effacer</button> -->
+    </div>
+  </div>
+
+</div>

@@ -12,10 +12,10 @@
 
     </div>
     <div *ngSwitchCase="'modification'">
-      <!-- <home-collaborateur-modif
+      <home-clinique-modif
         (ope)="getMode($event)"
-        [collaborateur]="user">
-      </home-collaborateur-modif> -->
+        [clinique]="clinique_user_gestion.model">
+      </home-clinique-modif>
 
     </div>
     <div *ngSwitchDefault>
@@ -27,25 +27,23 @@
   </fieldset>
 
   <fieldset *ngIf="cliniquesGestion && cliniquesGestion.length > 0;else NoAutre">
-    <legend><h3>Autres collaborateurs</h3></legend>
+    <legend><h3>Autres cliniques</h3></legend>
     <div *ngFor="let clinique of cliniquesGestion; index as i">
       <ng-container [ngSwitch]="clinique.mode">
         <home-clinique-consult
           *ngSwitchCase="'consultation'"
-          [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
           [clinique]="clinique.model">
         </home-clinique-consult>
-        <!-- <div *ngSwitchCase="'modification'"> -->
-        <!-- <home-collaborateur-modif
+    <!-- <div *ngSwitchCase="'modification'"> -->
+        <home-clinique-modif
           *ngSwitchCase="'modification'"
           [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
-          [collaborateur]="clinique.model">
-        </home-collaborateur-modif> -->
-        <!-- </div> -->
+          [clinique]="clinique.model">
+        </home-clinique-modif>
+      <!-- </div> -->
         <home-clinique-consult
-          [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
           [clinique]="clinique.model"
           *ngSwitchDefault>

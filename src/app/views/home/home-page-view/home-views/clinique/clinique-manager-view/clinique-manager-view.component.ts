@@ -17,15 +17,16 @@ export class CliniqueManagerViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.clinique = {adresse: "46 Rue oaks stanton, 82780 faraday", tel: "0634017279",
-      disponibilite:"l"};
+      disponibilite:"[Lun-Mar-Mer-Jeu-Ven].8:30-18:00"};
     this.clinique_user_gestion = {mode: 'consultation',
       model:Object.assign({}, this.user.clinique)};
 
       const autre_lieu = {adresse: "51-53 Avenue Martin Dupres, 82780 faraday",
-        tel: "0634017279", disponibilite:"l"}
+        tel: "0634017279", disponibilite:"[Lun-Mar-Mer-Jeu-Ven].8:30-17:30/Sam.9:00-14:00"}
       this.cliniquesGestion.push({mode: 'consultation',
         model: autre_lieu});
   };
+
   getMode(mode:GestionMode) {
     console.log(mode);
     this.clinique_user_gestion.mode = mode;

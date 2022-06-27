@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SideMenuItem, LINKS } from '../../../models/common.model';
 import { NavigationService } from '../../../services/navigation.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-home-page-view',
@@ -21,10 +22,12 @@ export class HomePageViewComponent implements OnInit {
     {num: 4, disable: false, title: "Vos catalogues produits", iconName: "medication", selected: false }
   ];
 
-  constructor(private navigationService: NavigationService) { }
+  constructor(private primengConfig: PrimeNGConfig,
+    private navigationService: NavigationService) { }
 
   ngOnInit(): void {
-    let verifUrl: boolean | null = null;
+    this.primengConfig.ripple = true;
+    //let verifUrl: boolean | null = null;
     const url_current:string = window.location.href;
     this.menuitems.map(m => {
       if(m.route && url_current.includes(m.route) && !m.selected && !m.disable) {

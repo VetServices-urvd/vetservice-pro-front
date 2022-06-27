@@ -1,5 +1,31 @@
-.collab-consult{
-  width: 70%;
+.clinique-modif{
+  width: auto;
   margin: 0% 0% 4% 8%;
-  padding-right: 14%;
+  padding-right: 3%;
+}
+
+.modif-block-cli
+{
+  display:flex;
+  align-items:start;
+  align-self: flex-end;
+  gap:10px 10px;
+  flex-wrap: wrap;
+}
+
+.modif-block-btn {
+  background-color: white;
+  display: flex; gap: 10px;
+  justify-content: space-evenly
+}
+
+label{
+  margin-right: 2px;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px 10px;
 }
