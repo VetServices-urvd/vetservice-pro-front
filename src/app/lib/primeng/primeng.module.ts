@@ -8,6 +8,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DragDropModule } from 'primeng/dragdrop';
 import { ChipModule } from 'primeng/chip';
 import { InputMaskModule } from 'primeng/inputmask';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [],
   imports: [
@@ -21,7 +22,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     AutoCompleteModule,
     DragDropModule,
     ChipModule,
-    InputMaskModule
+    InputMaskModule,
+    TableModule
   ]
 })
 export class PrimengModule { }

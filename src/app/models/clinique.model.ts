@@ -34,7 +34,7 @@ export class Adresse implements AdresseItem {
   }
   to_string() {
     let adr = '';
-    adr += (this.complement !== ''? this.complement + ', ': '') + this.voie
+    adr += (this.complement || this.complement !== ''? this.complement + ', ': '') + this.voie
     + ' ' + this.nomVoie + ', ' + this.codePostal + ' ' + this.ville;
     return adr;
   }
@@ -49,8 +49,9 @@ export class Adresse implements AdresseItem {
       firstpart = arr[0];
       sndpart = arr[1];
       thirdpart = arr[2];
-      this.complement = firstpart;
     }
+
+    this.complement = firstpart?firstpart:'';
     //console.log("Parse 1 adr: " + firstpart + "/" + sndpart + '/' + thirdpart);
 
     //step2
@@ -77,7 +78,7 @@ export class Adresse implements AdresseItem {
 
 }
 export interface DisponibiliteItem {
-  day?:string | string[];
+  day: string[];
   hDebut:string;
   hFin:string;
 }
@@ -90,6 +91,9 @@ export class Disponibilites {
     if(!dispos || dispos.length === 0) this.dispos = []
     else{
       this.dispos = dispos;
+      this.dispos.forEach(d => {
+        d.day = this.orderDays(d.day);
+      });
     }
   }
 
@@ -99,9 +103,11 @@ export class Disponibilites {
     });
   }
 
-  private convertDaysToMini(days:string[]):string[] {
-    const full_days:string[] = Object.assign([],days);
-    return full_days.map(d => d.substring(0,3));
+  private convertDaysToMini(full_days:string[]):string[] {
+    //let full_days:string[] = Object.assign([],days);
+    return full_days.map(d => {
+      return d.substring(0,3)
+    });
   }
   private convertDaysToFull(days:string[]):string[] {
     const mini_days:string[] = Object.assign([],days);
@@ -115,12 +121,14 @@ export class Disponibilites {
     let str = '';
     this.dispos.map((val, i) => {
       if(val.day){
-        if(Array.isArray(val.day)){
-          val.day = this.convertDaysToMini(this.orderDays(val.day));
-          str += "[" + val.day.join('-') + '].'+
+        if(val.day.length > 1) {
+          let copyDays:string[] = Object.assign([],val.day);
+          copyDays = this.convertDaysToMini(this.orderDays(val.day));
+          console.log("convert mini is " + JSON.stringify(copyDays))
+          str += "[" + copyDays.join('-') + '].'+
             val.hDebut + '-' + val.hFin;
         }else{
-          str += val.day.substring(0,3) + '.'+
+          str += val.day[0].substring(0,3) + '.'+
             val.hDebut + '-' + val.hFin;
         }
         if(i>1 || i< this.dispos.length - 1){
@@ -135,14 +143,15 @@ export class Disponibilites {
     let split$1 = dispo_str.split('/');
     if(split$1) {
       split$1.map((val$1, index)=> {
-        let dispoItem:DisponibiliteItem = {hDebut:'',hFin:''};
+        const dispoItem:DisponibiliteItem = <DisponibiliteItem>{};
         // parse day or days
         let split$2 = val$1.split('.');
         if(split$2[0].length === 3){
-          dispoItem.day = this.daysGet.find((v) => v.includes(split$2[0]));
+          dispoItem.day = this.daysGet.filter((v) => v.includes(split$2[0]));
         }else if(split$2[0].length > 3){
           const splitSub = split$2[0].substring(1,split$2[0].length-1);
           dispoItem.day = this.convertDaysToFull(splitSub.split('-'));
+          console.log("convert full is " + JSON.stringify(dispoItem.day))
         }
         // parse plage horaire
         let splitHours = split$2[1].split('-');
