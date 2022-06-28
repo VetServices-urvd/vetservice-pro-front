@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, DoCheck, } from '@angular/core';
 import { Collaborateur } from '../../../../../../models/collaborateur.model';
 import { Clinique } from '../../../../../../models/clinique.model';
 import { GestionMode, ModelGestion } from '../../../../../../models/common.model';
+import { ConfirmationService, MessageService } from "primeng/api";
+import { CliniqueDeleteAlertComponent } from '../../../../../../components/clinique/clinique-delete-alert/clinique-delete-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-clinique-manager-view',
@@ -13,11 +16,16 @@ export class CliniqueManagerViewComponent implements OnInit {
   user: Collaborateur = <Collaborateur>{};
   clinique_user_gestion:ModelGestion<Clinique> = <ModelGestion<Clinique>>{};
   cliniquesGestion: ModelGestion<Clinique>[] =  [];
-  constructor() { }
+
+  // @ViewChild('ConfirmDelete') confirmDelete!:Event;
+  // @ViewChild('confirmPAll') confirmDeleteAutre!:Event;
+
+  constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.user.clinique = {adresse: "46 Rue oaks stanton, 82780 faraday", tel: "0634017279",
       disponibilite:"[Lun-Mar-Mer-Jeu-Ven].8:30-18:00"};
+      this.user.admin = true;
     this.clinique_user_gestion = {mode: 'consultation',
       model:Object.assign({}, this.user.clinique)};
 
@@ -26,6 +34,17 @@ export class CliniqueManagerViewComponent implements OnInit {
       this.cliniquesGestion.push({mode: 'consultation',
         model: autre_lieu});
   };
+  // ngDoCheck():void{
+  //   console.log("Check > " + this.clinique_user_gestion.mode);
+  //   if(this.clinique_user_gestion.mode === 'supression') {
+  //     this.deleteAction(this.clinique_user_gestion.model)
+  //   }
+  //   this.cliniquesGestion.forEach(cg =>{
+  //     if(cg.mode === 'supression' ){
+  //       this.deleteAction(cg.model);
+  //     }
+  //   });
+  // }
 
   getMode(mode:GestionMode) {
     console.log(mode);
@@ -42,13 +61,4 @@ export class CliniqueManagerViewComponent implements OnInit {
     //   this.openForDelete(this.cliniquesGestion[index].model,true);
     // }
   }
-  openForDelete(clinique: Clinique, byAdmin: boolean) {
-    // this.dialog.open(CollaborateurSupprimeAlertComponent, {
-    //   data: {
-    //     clinique: collab,
-    //     enable_admin: byAdmin
-    //   }
-    // });
-  }
-
 }

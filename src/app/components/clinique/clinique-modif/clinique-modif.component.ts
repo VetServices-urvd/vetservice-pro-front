@@ -3,6 +3,8 @@ import { GestionMode } from '../../../models/common.model';
 import { Clinique, Adresse, AdresseItem, Disponibilites, DisponibiliteItem } from '../../../models/clinique.model';
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import { CliniqueDeleteAlertComponent } from '../clinique-delete-alert/clinique-delete-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'home-clinique-modif',
   templateUrl: './clinique-modif.component.html',
@@ -27,9 +29,7 @@ export class CliniqueModifComponent implements OnInit {
   draggedDay:any;
   dayCtrl = new FormControl();
 
-  constructor() {
-
-  }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.new_clinique = Object.assign({}, this.clinique);
@@ -159,6 +159,13 @@ export class CliniqueModifComponent implements OnInit {
 
   launch(mode:GestionMode) {
     this.ope.emit(mode);
+  }
+  deleteAction() {
+    this.dialog.open(CliniqueDeleteAlertComponent, {
+      data: {
+        clinique: this.clinique
+      }
+    });
   }
 
 }

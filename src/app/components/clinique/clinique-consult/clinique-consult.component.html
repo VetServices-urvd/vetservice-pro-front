@@ -4,7 +4,7 @@
   <mat-card-subtitle>
     <i>{{ enable_allowed?'(Administateur)':'(Utilisateur)'}}</i></mat-card-subtitle>
   </mat-card-header> -->
-  <mat-list style="margin-bottom:4%;padding-bottom:4%;">
+  <mat-list style="margin-bottom:4%;">
     <mat-list-item>
       <mat-icon matListIcon>pin_drop</mat-icon>
       <h4 matLine><b><i>{{clinique.adresse}}</i></b></h4>
@@ -13,12 +13,29 @@
       <mat-icon matListIcon>call</mat-icon>
       <h4 matLine><i>{{clinique.tel}}</i></h4>
     </mat-list-item>
-    <mat-list-item>
-      <mat-icon matListIcon>view_agenda</mat-icon>
-     <p matLine><u>Disponiblite:</u>
-       <br>{{diponibilites}}</p>
-    </mat-list-item>
   </mat-list>
+
+  <div  style="margin-left:15px;padding-bottom:1%;">
+    <span style="display:flex;flex-direction:row;column-gap:20px;">
+      <mat-icon>view_agenda</mat-icon>
+      <h4><u>Disponiblite:</u></h4>
+    </span>
+
+    <p-table [value]="diponibilites" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Jours d'ouverture</th>
+              <th>Horaires</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dispoItem>
+          <tr>
+              <td>{{dispoItem.day.length>1?dispoItem.day.join(', '):dispoItem.day}}</td>
+              <td>{{dispoItem.hDebut}} à {{dispoItem.hFin}}</td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </div>
 
   <mat-divider inset></mat-divider>
   <mat-card-actions *ngIf="!enable_allowed; else Allowed"
@@ -28,10 +45,9 @@
       (click)="launch('modification')"
       disabled>Modification</button>
     <button mat-button
-    style="align-self:flex-end;"
-    class="primary-color-btn"
-      (click)="launch('supression')"
-      disabled>Supression</button>
+      style="align-self:flex-end;"
+      class="primary-color-btn"
+      disabled>Suppression</button>
   </mat-card-actions>
   <ng-template #Allowed>
     <mat-card-actions
@@ -42,7 +58,7 @@
       <button mat-button
       style="align-self:flex-end;"
       class="primary-color-btn"
-        (click)="launch('supression')">Supression</button>
+        (click)="deleteAction()">Suppression</button>
     </mat-card-actions>
   </ng-template>
 </mat-card>

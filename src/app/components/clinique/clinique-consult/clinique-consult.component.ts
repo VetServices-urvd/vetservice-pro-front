@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GestionMode } from '../../../models/common.model';
-import { Clinique, Disponibilites } from '../../../models/clinique.model';
+import { Clinique, Disponibilites, DisponibiliteItem } from '../../../models/clinique.model';
+import { CliniqueDeleteAlertComponent } from '../clinique-delete-alert/clinique-delete-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'home-clinique-consult',
@@ -12,13 +14,20 @@ export class CliniqueConsultComponent implements OnInit {
   @Input() enable_allowed: boolean = true;
   @Input() clinique: Clinique = <Clinique>{};
   @Output() ope: EventEmitter<GestionMode> = new EventEmitter<GestionMode>();
-  diponibilites:any;
-  constructor() { }
+  diponibilites:DisponibiliteItem[] = [];
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     const dispo = new Disponibilites();
-    const itmes = dispo.parse(this.clinique.disponibilite);
-    this.diponibilites = dispo.to_string();
+    this.diponibilites = dispo.parse(this.clinique.disponibilite);
+  }
+
+  deleteAction() {
+    this.dialog.open(CliniqueDeleteAlertComponent, {
+      data: {
+        clinique: this.clinique
+      }
+    });
   }
 
   launch(mode:GestionMode) {

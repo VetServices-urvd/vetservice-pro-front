@@ -18,6 +18,9 @@ import { CliniqueConsultComponent } from '../../../components/clinique/clinique-
 import { CollaborateurSupprimeAlertComponent } from '../../../components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
 import { DisponibliteFormComponent } from '../../../components/clinique/disponiblite-form/disponiblite-form.component';
 import { AdresseFormComponent } from '../../../components/clinique/adresse-form/adresse-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { CliniqueDeleteAlertComponent } from '../../../components/clinique/clinique-delete-alert/clinique-delete-alert.component';
 
 
 
@@ -34,7 +37,8 @@ import { AdresseFormComponent } from '../../../components/clinique/adresse-form/
     CliniqueConsultComponent,
     CliniqueModifComponent,
     DisponibliteFormComponent,
-    AdresseFormComponent
+    AdresseFormComponent,
+    CliniqueDeleteAlertComponent
   ],
   imports: [
     CommonModule,
@@ -44,10 +48,11 @@ import { AdresseFormComponent } from '../../../components/clinique/adresse-form/
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     PrimengModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [ConfirmationService, MessageService ],
   bootstrap: [HomePageViewComponent]
 })
 export class HomePageViewModule { }

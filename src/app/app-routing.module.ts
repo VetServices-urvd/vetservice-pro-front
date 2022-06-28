@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcription-vet-view.component';
 import { InscriptionCollabViewComponent } from './views/inscription-collab-view/inscription-collab-view.component';
 import { AuthentificationViewComponent } from './views/authentification-view/authentification-view.component';
+import { SubcriptionVetViewComponent } from './views/subcription-vet-view/subcription-vet-view.component';
 
 const routes: Routes = [
   {

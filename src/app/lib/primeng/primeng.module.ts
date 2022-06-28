@@ -9,6 +9,8 @@ import { DragDropModule } from 'primeng/dragdrop';
 import { ChipModule } from 'primeng/chip';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [],
   imports: [
@@ -23,7 +25,9 @@ import { TableModule } from 'primeng/table';
     DragDropModule,
     ChipModule,
     InputMaskModule,
-    TableModule
+    TableModule,
+    ConfirmPopupModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

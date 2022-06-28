@@ -12,8 +12,6 @@ import { AuthentificationViewComponent } from './views/authentification-view/aut
 import { HeaderNavSideComponent } from './components/common/header-nav-side/header-nav-side.component';
 import { PrimengModule } from './lib/primeng/primeng.module';
 import { CommonModule } from '@angular/common';
-import { DisponibliteFormComponent } from './components/clinique/disponiblite-form/disponiblite-form.component';
-import { AdresseFormComponent } from './components/clinique/adresse-form/adresse-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +31,6 @@ import { AdresseFormComponent } from './components/clinique/adresse-form/adresse
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     MaterialModule,
@@ -41,6 +38,6 @@ import { AdresseFormComponent } from './components/clinique/adresse-form/adresse
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
