@@ -1,0 +1,17 @@
+fieldset {
+  border:1px solid black;
+  margin: 2rem  15% 1rem 0rem;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 2%;
+  height: auto;
+}
+
+label {
+  font-weight: bold;
+  padding-right: 1%;
+}
+.list-item {
+  display: flex;
+  flex-wrap:wrap;
+}

@@ -23,16 +23,16 @@
 
     <p-table [value]="diponibilites" responsiveLayout="scroll">
       <ng-template pTemplate="header">
-          <tr>
-              <th>Jours d'ouverture</th>
-              <th>Horaires</th>
-          </tr>
+        <tr>
+          <th>Jours d'ouverture</th>
+          <th>Horaires</th>
+        </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dispoItem>
-          <tr>
-              <td>{{dispoItem.day.length>1?dispoItem.day.join(', '):dispoItem.day}}</td>
-              <td>{{dispoItem.hDebut}} à {{dispoItem.hFin}}</td>
-          </tr>
+        <tr>
+          <td>{{dispoItem.day.length>1?dispoItem.day.join(', '):dispoItem.day}}</td>
+          <td>{{dispoItem.hDebut}} à {{dispoItem.hFin}}</td>
+        </tr>
       </ng-template>
     </p-table>
   </div>

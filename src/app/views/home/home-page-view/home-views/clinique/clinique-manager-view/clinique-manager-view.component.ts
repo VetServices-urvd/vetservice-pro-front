@@ -17,10 +17,7 @@ export class CliniqueManagerViewComponent implements OnInit {
   clinique_user_gestion:ModelGestion<Clinique> = <ModelGestion<Clinique>>{};
   cliniquesGestion: ModelGestion<Clinique>[] =  [];
 
-  // @ViewChild('ConfirmDelete') confirmDelete!:Event;
-  // @ViewChild('confirmPAll') confirmDeleteAutre!:Event;
-
-  constructor(private messageService: MessageService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.user.clinique = {adresse: "46 Rue oaks stanton, 82780 faraday", tel: "0634017279",

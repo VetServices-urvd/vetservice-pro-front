@@ -1,1 +1,67 @@
-<p>compte-abonnement-view works!</p>
+<div>
+  <div>
+    <h2 style="font-weight:bold">{{title}}</h2>
+  </div>
+  <fieldset>
+    <legend><h3>Information du compte</h3></legend>
+    <div>
+      <mat-list>
+        <mat-list-item class="list-item">
+          <label>Intitule:</label>
+          <span>{{vet.nom.toUpperCase()}}</span>
+        </mat-list-item>
+        <mat-list-item class="list-item">
+          <label>Mail de l'entreprise:</label>
+          <span>{{vet.emailSociete.toUpperCase()}}</span>
+        </mat-list-item>
+        <mat-list-item class="list-item">
+          <label>Indentification:</label>
+          <span> {{vet.numsociete}}</span>
+        </mat-list-item>
+        <mat-list-item class="list-item">
+          <label>Coordonnée bancaire:</label>
+        </mat-list-item>
+      </mat-list>
+      <mat-list *ngIf="coord_banq; else noCoordBanq" style="margin-left:5%">
+        <mat-list-item  class="list-item">
+          <label>Intitule:</label>
+          <span>{{coord_banq.intitule}}</span>
+        </mat-list-item>
+        <mat-list-item  class="list-item">
+          <label>IBAN:</label>
+          <span>{{coord_banq.iban}}</span>
+        </mat-list-item>
+        <mat-list-item  class="list-item">
+          <label>BIC:</label>
+          <span>{{coord_banq.bic}}</span>
+        </mat-list-item>
+      </mat-list>
+      <ng-template #noCoordBanq>
+        <p>Pas de coordonnée enregistrer</p>
+      </ng-template>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend><h3>Abonnement</h3></legend>
+    <div>
+      <mat-list>
+        <mat-list-item  class="list-item">
+          <label> Frequence de paiement:</label>
+          <span>{{subscription.type}}</span>
+        </mat-list-item>
+        <mat-list-item  class="list-item">
+          <label> Début:</label>
+          <span>{{subscription.datestartsub}}</span>
+        </mat-list-item>
+        <mat-list-item  class="list-item">
+          <label>Fin:</label>
+          <span>{{subscription.dateendsub}}</span>
+        </mat-list-item>
+        <mat-list-item  class="list-item">
+          <label>Statut:</label>
+          <span>{{subscription.actif?'En cours':'Inactif'}}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </fieldset>
+</div>
