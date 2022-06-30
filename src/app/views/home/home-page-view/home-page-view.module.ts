@@ -21,7 +21,9 @@ import { AdresseFormComponent } from '../../../components/clinique/adresse-form/
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CliniqueDeleteAlertComponent } from '../../../components/clinique/clinique-delete-alert/clinique-delete-alert.component';
-
+import { AbonnementReactivationAlertComponent } from '../../../components/abonnement/abonnement-reactivation-alert/abonnement-reactivation-alert.component';
+import { CompteModifComponent } from './components/compte/compte-modif/compte-modif.component';
+import { CompteSupprimeAlertComponent } from './components/compte/compte-supprime-alert/compte-supprime-alert.component';
 
 
 @NgModule({
@@ -38,7 +40,10 @@ import { CliniqueDeleteAlertComponent } from '../../../components/clinique/clini
     CliniqueModifComponent,
     DisponibliteFormComponent,
     AdresseFormComponent,
-    CliniqueDeleteAlertComponent
+    CliniqueDeleteAlertComponent,
+    AbonnementReactivationAlertComponent,
+    CompteModifComponent,
+    CompteSupprimeAlertComponent,
   ],
   imports: [
     CommonModule,

@@ -67,18 +67,23 @@
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label>Statut:</label>
-          <span>{{subscription.actif?'En cours':'Inactif'}}</span>
+          <span>{{status()}}</span>
         </mat-list-item>
       </mat-list>
-      <div  *ngIf="user.data.admin">
-        <span class="p-buttonset" *ngIf="subscription.type === 'mensuel'">
-          <button pButton type="button" class="p-button-secondary" label="Activer" icon="pi pi-check" [disabled]="subscription.actif"></button>
-          <button pButton type="button" class="p-button-secondary" label="Desactiver" icon="pi pi-times" [disabled]="!subscription.actif"></button>
+      <div *ngIf="user.data.admin">
+        <span class="p-buttonset">
+          <button pButton type="button" class="p-button-secondary" label="Activer" icon="pi pi-check"
+            (click)="activer()"
+            [disabled]="!isNotExpired() || subscription.actif"></button>
+          <button pButton type="button" class="p-button-secondary" label="Desactiver" icon="pi pi-times"
+            (click)="desactiver()"
+            [disabled]="!isNotExpired() || !subscription.actif"></button>
+          <button pButton
+            class="p-button-secondary"
+            type="button" label="Reactiver" icon="pi pi-unlock"
+            (click)="reactiver()"
+            [disabled]="isNotExpired()"></button>
         </span>
-        <button pButton  *ngIf="subscription.type === 'annuel'"
-          class="p-button-secondary"
-          type="button" label="Reactiver" [icon]="isNotExpired()?'pi pi-unlock':'pi pi-lock'"
-          [disabled]="isNotExpired()"></button>
       </div>
     </div>
   </fieldset>

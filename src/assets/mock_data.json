@@ -28,8 +28,8 @@
   "abonnement":{
     "subscriptionid":"idab1",
     "type":"mensuel",
-    "datestartsub": "29/06/2021",
-    "dateendsub":  "29/06/2022",
+    "datestartsub": "2021-06-29",
+    "dateendsub": "2022-06-29",
     "actif":true
   },
   "collaborateurs": [
@@ -50,7 +50,7 @@
       "prenom": "Goerge",
       "emailPro":"gwalls@email.eu",
       "fonction":"Docteur",
-      "admin": true,
+      "admin": false,
       "cliniqueref":"idcli1"
     }
   ],

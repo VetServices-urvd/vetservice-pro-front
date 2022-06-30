@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MOCK_FILE } from '../../models/common.model';
+import { MOCK_FILE, UpdatePayload } from '../../models/common.model';
 import { HttpClient } from '@angular/common/http';
 import { Abonnement } from '../../models/abonnement.model';
 import { Observable } from 'rxjs';
@@ -21,5 +21,9 @@ export class AbonnementService {
         return rep;
       })
     );
+  }
+
+  update(payload: UpdatePayload){
+    //return this.http.get<any>(this.url)
   }
 }

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{HEADER}} </h2>
+<mat-dialog-content class="mat-typography" width="300px" height="200px">
+  <h3>{{CONTENT}}</h3>
+  <div>
+    <label style="margin-right:1%">Type de paiement:</label>
+    <mat-radio-group formControlName="type">
+      <mat-radio-button value="Mensuel" style="margin-right:1%">Mensuel</mat-radio-button>
+      <mat-radio-button value="Annuel" style="margin-right:1%">Annuel</mat-radio-button>
+    </mat-radio-group>
+  </div><br>
+</mat-dialog-content>
+<mat-dialog-actions align="right">
+  <button mat-button class="secondary-color-btn" mat-dialog-close>Annuler</button>
+  <button mat-button class="secondary-color-btn"
+    (click)="action()"
+    [mat-dialog-close]="true" cdkFocusInitial>Renouveller</button>
+</mat-dialog-actions>

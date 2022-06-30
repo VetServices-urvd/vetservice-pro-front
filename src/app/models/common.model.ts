@@ -39,3 +39,7 @@ export function getUrl(path:string) {
     return '../../assets/mock_data.json';
   }
 }
+
+export interface UpdatePayload {
+  payload:any;
+}

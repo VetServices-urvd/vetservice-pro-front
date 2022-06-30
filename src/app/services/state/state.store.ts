@@ -4,16 +4,11 @@ import { CollaborateurService } from '../collaborateur/collaborateur.service';
 import { CliniqueService } from '../clinique/clinique.service';
 import { VeterinaireService } from '../veterinaire/veterinaire.service';
 import { Observable, of } from 'rxjs';
-import { GestionMode } from '../../models/common.model';
+import { GestionMode, UpdatePayload } from '../../models/common.model';
 export interface AppState {
   collaborateurs: Collaborateur[];
 }
-export interface Payload<T> {
-  payload: T;
-  mode: GestionMode;
-}
-export interface CollabPayload extends Payload<Collaborateur>{
-}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +32,7 @@ export class StateStore {
     //   });
     // }
 
-    push<T>(payload: Payload<T>){
+    push<T>(payload: UpdatePayload){
       return
     }
     private init(){

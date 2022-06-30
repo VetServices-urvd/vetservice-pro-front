@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
     SubcriptionVetViewComponent,
     InscriptionCollabViewComponent,
     AuthentificationViewComponent,
-    HeaderNavSideComponent,
+    HeaderNavSideComponent
     // DisponibliteFormComponent,
     // AdresseFormComponent
   ],
