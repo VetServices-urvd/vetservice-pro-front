@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Veterinaire, CoordonneeBancaire, CoordonneeBancaireItem } from '../../../../../../models/veterinaire.model';
-import { Collaborateur } from '../../../../../../models/collaborateur.model';
+
 import { Abonnement } from '../../../../../../models/abonnement.model';
-import { DatePipe } from '@angular/common';
+
 import { UserService } from '../../../../../../services/user/user.service';
 import { VeterinaireService } from '../../../../../../services/veterinaire/veterinaire.service';
 import { CurrentUser } from '../../../../../../models/user.model';
 
-import { UpdatePayload } from '../../../../../../models/common.model';
+import { UpdatePayload, ModelGestion } from '../../../../../../models/common.model';
 import { AbonnementService } from '../../../../../../services/abonnement/abonnement.service';
 import { AbonnementReactivationAlertComponent } from '../../../../../../components/abonnement/abonnement-reactivation-alert/abonnement-reactivation-alert.component';
+import { CompteSupprimeAlertComponent } from '../../../../../../components/compte/compte-supprime-alert/compte-supprime-alert.component'
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-compte-abonnement-view',
@@ -54,11 +55,10 @@ export class CompteAbonnementViewComponent implements OnInit {
 
   /**Compte */
 
-  suprression(){
-    this.dialog.open(CompteSuppressionAlertComponent, {
+  suppression(){
+    this.dialog.open(CompteSupprimeAlertComponent, {
       data: {
-        abonnement: this.subscription,
-        coord_banq: this.coord_banq
+        veterinaire: this.vet,
       }
     });
   }

@@ -3,7 +3,7 @@
   <h3>{{content1}}</h3>
   <div>
     <label style="margin-right:1%">Type de paiement:</label>
-    <mat-radio-group formControlName="type">
+    <mat-radio-group [formControl]="typeA">
       <mat-radio-button value="Mensuel" style="margin-right:1%">Mensuel</mat-radio-button>
       <mat-radio-button value="Annuel" style="margin-right:1%">Annuel</mat-radio-button>
     </mat-radio-group>
@@ -13,5 +13,5 @@
   <button mat-button class="secondary-color-btn" mat-dialog-close>Annuler</button>
   <button mat-button class="secondary-color-btn"
     (click)="action()"
-    [mat-dialog-close]="true" cdkFocusInitial>Renouveller</button>
+    [mat-dialog-close]="true" cdkFocusInitial  [disabled]="typeA.value === null">Renouveller</button>
 </mat-dialog-actions>

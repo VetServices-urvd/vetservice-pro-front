@@ -4,8 +4,8 @@
   </div>
   <fieldset>
     <legend><h3>Information du compte</h3></legend>
-    <div style="margin-left:5%">
-      <mat-list >
+    <div style="margin-left:5%;margin-bottom:2%;">
+      <mat-list>
         <mat-list-item class="list-item">
           <label>Intitule:</label>
           <span>{{vet.nom.toUpperCase()}}</span>
@@ -44,14 +44,17 @@
           <button pButton class="p-button-secondary"type="button"
             label="Modifier" icon="pi pi-pencil"></button>
           <button pButton class="p-button-secondary" type="button"
-            label="Supprimer" icon="pi pi-trash"></button>
+          (click)="suppression()"
+            label="Supprimer" icon="pi pi-trash"
+            pTooltip="Il faut desactiver ou aller au bout de son abonnement pour supprimer le compte"
+            [disabled]="status()!=='Inactif'"></button>
         </span>
       </div>
     </div>
   </fieldset>
   <fieldset>
     <legend><h3>Abonnement</h3></legend>
-    <div style="margin-left:5%">
+    <div style="margin-left:5%;margin-bottom:2%;">
       <mat-list>
         <mat-list-item  class="list-item">
           <label> Frequence de paiement:</label>
@@ -59,11 +62,13 @@
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label> Début:</label>
-          <span>{{subscription.datestartsub | date:'dd/MM/YYYY'}}</span>
+          <!-- <span>{{subscription.datestartsub | date:'dd/MM/YYYY'}}</span> -->
+          <span>{{subscription.datestartsub}}</span>
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label>Fin:</label>
-          <span>{{subscription.dateendsub | date:'dd/MM/YYYY'}}</span>
+          <!-- <span>{{subscription.dateendsub | date:'dd/MM/YYYY'}}</span> -->
+          <span>{{subscription.dateendsub}}</span>
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label>Statut:</label>

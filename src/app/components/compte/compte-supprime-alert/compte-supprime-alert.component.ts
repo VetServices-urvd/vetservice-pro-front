@@ -3,7 +3,7 @@ import { Veterinaire } from '../../../models/veterinaire.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MessageService } from 'primeng/api';
 @Component({
-  selector: 'app-compte-supprime-alert',
+  selector: 'home-compte-supprime-alert',
   templateUrl: './compte-supprime-alert.component.html',
   styleUrls: ['./compte-supprime-alert.component.scss']
 })

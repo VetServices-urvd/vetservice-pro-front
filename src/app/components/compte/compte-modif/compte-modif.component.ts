@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-compte-modif',
+  selector: 'home-compte-modif',
   templateUrl: './compte-modif.component.html',
   styleUrls: ['./compte-modif.component.scss']
 })

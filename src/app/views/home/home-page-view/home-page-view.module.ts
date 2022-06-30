@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HomePageViewRoutingModule } from './home-page-view-routing.module';
 import { DefaultViewComponent } from '../../default-view/default-view.component';
 import { HomePageViewComponent } from './home-page-view.component';
@@ -13,17 +13,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from '../../../lib/primeng/primeng.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CliniqueModifComponent } from '../../../components/clinique/clinique-modif/clinique-modif.component';
-import { CliniqueConsultComponent } from '../../../components/clinique/clinique-consult/clinique-consult.component';
 import { CollaborateurSupprimeAlertComponent } from '../../../components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
+import { CliniqueConsultComponent } from '../../../components/clinique/clinique-consult/clinique-consult.component';
+import { CliniqueModifComponent } from '../../../components/clinique/clinique-modif/clinique-modif.component';
 import { DisponibliteFormComponent } from '../../../components/clinique/disponiblite-form/disponiblite-form.component';
-import { AdresseFormComponent } from '../../../components/clinique/adresse-form/adresse-form.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { CliniqueDeleteAlertComponent } from '../../../components/clinique/clinique-delete-alert/clinique-delete-alert.component';
 import { AbonnementReactivationAlertComponent } from '../../../components/abonnement/abonnement-reactivation-alert/abonnement-reactivation-alert.component';
-import { CompteModifComponent } from './components/compte/compte-modif/compte-modif.component';
-import { CompteSupprimeAlertComponent } from './components/compte/compte-supprime-alert/compte-supprime-alert.component';
+import { CompteModifComponent } from '../../../components/compte/compte-modif/compte-modif.component';
+import { CompteSupprimeAlertComponent } from '../../../components/compte/compte-supprime-alert/compte-supprime-alert.component';
+import { AdresseFormComponent } from '../../../components/clinique/adresse-form/adresse-form.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -43,12 +44,10 @@ import { CompteSupprimeAlertComponent } from './components/compte/compte-supprim
     CliniqueDeleteAlertComponent,
     AbonnementReactivationAlertComponent,
     CompteModifComponent,
-    CompteSupprimeAlertComponent,
+    CompteSupprimeAlertComponent
   ],
   imports: [
     CommonModule,
-    //BrowserModule,
-    //BrowserAnimationsModule,
     HomePageViewRoutingModule,
     MaterialModule,
     FormsModule,
@@ -56,8 +55,21 @@ import { CompteSupprimeAlertComponent } from './components/compte/compte-supprim
     HttpClientModule,
     PrimengModule
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ConfirmationService, MessageService ],
+  // exports:[
+  //   CollaborateurConsultComponent,
+  //   CollaborateurModifComponent,
+  //   CollaborateurSupprimeAlertComponent,
+  //   CliniqueConsultComponent,
+  //   CliniqueModifComponent,
+  //   DisponibliteFormComponent,
+  //   AdresseFormComponent,
+  //   CliniqueDeleteAlertComponent,
+  //   AbonnementReactivationAlertComponent,
+  //   CompteModifComponent,
+  //   CompteSupprimeAlertComponent
+  // ],
+  //schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  providers: [DatePipe, ConfirmationService, MessageService],
   bootstrap: [HomePageViewComponent]
 })
 export class HomePageViewModule { }
