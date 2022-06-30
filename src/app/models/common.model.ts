@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 
 
 export type Civilite = 'Mr' | 'Mme' | 'Dr';
@@ -28,4 +29,13 @@ export const LINKS = {
   collaborateur: 'veterinaire/home/collaborateur',
   clinique: 'veterinaire/home/clinique',
   compte_abonnement: 'veterinaire/home/compte&abonnement'
+}
+export const MOCK_FILE = '../../assets/mock_data.json'
+export function getUrl(path:string) {
+  if(!environment.mock_all
+    || environment.api_routes.find((r: { path: string; mock: boolean; }) => path.includes(r.path) && r.mock === false)) {
+    return environment.api + '/' + path;
+  }else{
+    return '../../assets/mock_data.json';
+  }
 }

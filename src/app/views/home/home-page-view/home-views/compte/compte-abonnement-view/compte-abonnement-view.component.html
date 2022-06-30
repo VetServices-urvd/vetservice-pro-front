@@ -4,8 +4,8 @@
   </div>
   <fieldset>
     <legend><h3>Information du compte</h3></legend>
-    <div>
-      <mat-list>
+    <div style="margin-left:5%">
+      <mat-list >
         <mat-list-item class="list-item">
           <label>Intitule:</label>
           <span>{{vet.nom.toUpperCase()}}</span>
@@ -39,11 +39,19 @@
       <ng-template #noCoordBanq>
         <p>Pas de coordonnée enregistrer</p>
       </ng-template>
+      <div *ngIf="user.data.admin">
+        <span class="p-buttonset">
+          <button pButton class="p-button-secondary"type="button"
+            label="Modifier" icon="pi pi-pencil"></button>
+          <button pButton class="p-button-secondary" type="button"
+            label="Supprimer" icon="pi pi-trash"></button>
+        </span>
+      </div>
     </div>
   </fieldset>
   <fieldset>
     <legend><h3>Abonnement</h3></legend>
-    <div>
+    <div style="margin-left:5%">
       <mat-list>
         <mat-list-item  class="list-item">
           <label> Frequence de paiement:</label>
@@ -51,17 +59,27 @@
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label> Début:</label>
-          <span>{{subscription.datestartsub}}</span>
+          <span>{{subscription.datestartsub | date:'dd/MM/YYYY'}}</span>
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label>Fin:</label>
-          <span>{{subscription.dateendsub}}</span>
+          <span>{{subscription.dateendsub | date:'dd/MM/YYYY'}}</span>
         </mat-list-item>
         <mat-list-item  class="list-item">
           <label>Statut:</label>
           <span>{{subscription.actif?'En cours':'Inactif'}}</span>
         </mat-list-item>
       </mat-list>
+      <div  *ngIf="user.data.admin">
+        <span class="p-buttonset" *ngIf="subscription.type === 'mensuel'">
+          <button pButton type="button" class="p-button-secondary" label="Activer" icon="pi pi-check" [disabled]="subscription.actif"></button>
+          <button pButton type="button" class="p-button-secondary" label="Desactiver" icon="pi pi-times" [disabled]="!subscription.actif"></button>
+        </span>
+        <button pButton  *ngIf="subscription.type === 'annuel'"
+          class="p-button-secondary"
+          type="button" label="Reactiver" [icon]="isNotExpired()?'pi pi-unlock':'pi pi-lock'"
+          [disabled]="isNotExpired()"></button>
+      </div>
     </div>
   </fieldset>
 </div>

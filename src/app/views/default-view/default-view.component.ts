@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-default-view',
   templateUrl: './default-view.component.html',
@@ -8,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultViewComponent implements OnInit {
 
   constructor() { }
+  icons:any[] = []
 
   ngOnInit(): void {
   }

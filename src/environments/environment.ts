@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3000'
+  api: 'http://localhost:3000/api',
+  mock_all: true,
+  api_routes: [
+    {path:'auth', mock: true},
+    {path: 'collaborateurs', mock: true},
+    {path: 'cliniques', mock: true},
+    {path: 'veterinaire', mock: true},
+    {path: 'abonnement', mock: true},
+    {path: 'produits', mock: true},
+    {path: 'client', mock: true},
+  ],
 };
 
 /*

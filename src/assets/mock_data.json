@@ -1,0 +1,73 @@
+{
+  "auth":{
+    "data": {
+        "cliniqueid": "idcli1",
+        "adresse": "145 bis rue bidouille 75005",
+        "vetref": "idv1",
+        "tel": "",
+        "disponibilite": "",
+        "collaborateurid": "idcol1",
+        "nom": "",
+        "prenom": "",
+        "emailpro": "admin@test.fr",
+        "fonction": "",
+        "specialite": null,
+        "cliniqueref": "idcli1",
+        "admin": true,
+        "civilite": "Mr"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhMTgyYzVlZC00Yzg2LTQ3N2MtYjg3NC1iNjgxYWJiMzUyMWJfdGVzdF92ZXQiLCJpYXQiOjE2NTY1NDU5NDgsImV4cCI6MTY1NjU0Nzc0OH0.hGmm2NqiJm-w3uPuWlurjSaAg-1_o77pDHcjG8vTNWI"
+  },
+  "veterinaire":{
+    "vetid":"idv1",
+    "nom":"Medicalnimal",
+    "emailSociete": "medicalnimal.info@outlook.fr",
+    "numsociete": "123654789",
+    "coordBanq":"medicalnimal.FR4310096000701126137612Y48.SOGEFRPP"
+  },
+  "abonnement":{
+    "subscriptionid":"idab1",
+    "type":"mensuel",
+    "datestartsub": "29/06/2021",
+    "dateendsub":  "29/06/2022",
+    "actif":true
+  },
+  "collaborateurs": [
+    {
+      "collaborateurid": "idcol1",
+      "civilite": "Mr",
+      "nom":"ST-VINCHEN",
+      "prenom": "Patrick",
+      "emailPro":"pvichen@email.vet",
+      "fonction":"Assistant",
+      "admin": true,
+      "cliniqueref":"idcli1"
+    },
+    {
+      "collaborateurid": "idcol2",
+      "civilite": "Mr",
+      "nom":"Walls",
+      "prenom": "Goerge",
+      "emailPro":"gwalls@email.eu",
+      "fonction":"Docteur",
+      "admin": true,
+      "cliniqueref":"idcli1"
+    }
+  ],
+  "cliniques":[
+    {
+      "cliniqueid":"idcli1",
+      "adresse": "46 Rue oaks stanton, 82780 faraday",
+      "tel": "0634017279",
+      "disponibilite":"[Lun-Mar-Mer-Jeu-Ven].8:30-18:00",
+      "vetref": "idv1"
+    },
+    {
+      "cliniqueid":"idcli2",
+      "adresse": "51-53 Avenue Martin Dupres, 82780 faraday",
+      "tel": "0634017279",
+      "disponibilite":"[Lun-Mar-Mer-Jeu-Ven].8:30-17:30/Sam.9:00-14:00",
+      "vetref": "idv1"
+    }
+  ]
+}

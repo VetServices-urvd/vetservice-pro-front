@@ -11,6 +11,9 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ToastModule} from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
+import {TooltipModule} from 'primeng/tooltip';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -18,6 +21,7 @@ import {ToastModule} from 'primeng/toast';
   ],
   exports: [
     InputTextModule,
+    ButtonModule,
     PasswordModule,
     FieldsetModule,
     ChipsModule,
@@ -27,7 +31,8 @@ import {ToastModule} from 'primeng/toast';
     InputMaskModule,
     TableModule,
     ConfirmPopupModule,
-    ToastModule
+    ToastModule,
+    TooltipModule
   ]
 })
 export class PrimengModule { }
