@@ -1,1 +1,51 @@
-<p>compte-modif works!</p>
+
+<form [formGroup]="modifCompteForm" style="margin-left:5%;margin-bottom:2%;" >
+  <div>
+    <button mat-stroked-button (click)="back()">
+      <mat-icon>chevron_left</mat-icon>
+      Consultation
+    </button>
+  </div><br>
+  <div  *ngIf="coordBanq" style="margin-left:5%" class="block">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input type="text" matInput formControlName="nom">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mail entreprise</mat-label>
+      <input type="email" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field  appearance="outline">
+      <mat-label>Indentification</mat-label>
+      <input type="text" matInput formControlName="code">
+    </mat-form-field>
+    <!-- <div style="display:flow-root;"> -->
+      <h4>Coordonnée bancaire:</h4>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Intitule</mat-label>
+        <input type="text" matInput [(ngModel)]="coordBanq.intitule">
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>IBAN</mat-label>
+        <input type="text" matInput [(ngModel)]="coordBanq.iban">
+      </mat-form-field> -->
+      <div>
+        <p-inputMask [(ngModel)]="coordBanq.iban" style="width:300px;"
+         mask="**99-9999-9999-9999-9999-999"></p-inputMask>
+      </div>
+      <mat-form-field  appearance="outline">
+        <mat-label>BIC</mat-label>
+        <input type="text" matInput [(ngModel)]="coordBanq.bic">
+      </mat-form-field>
+    <!-- </div> -->
+
+  </div>
+
+  <div>
+    <button mat-icon-button class="secondary-color-btn"
+      (click)="send()" disabled="!hasChangeVet()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</form>

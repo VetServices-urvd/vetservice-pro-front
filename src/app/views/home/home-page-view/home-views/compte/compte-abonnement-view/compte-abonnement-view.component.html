@@ -3,8 +3,8 @@
     <h2 style="font-weight:bold">{{title}}</h2>
   </div>
   <fieldset>
-    <legend><h3>Information du compte</h3></legend>
-    <div style="margin-left:5%;margin-bottom:2%;">
+    <legend><h3>{{gestionCompte.mode === 'consultation'?'Information':'Modification'}} du compte</h3></legend>
+    <div style="margin-left:5%;margin-bottom:2%;" *ngIf="gestionCompte.mode === 'consultation'; else ModifBlock">
       <mat-list>
         <mat-list-item class="list-item">
           <label>Intitule:</label>
@@ -42,7 +42,7 @@
       <div *ngIf="user.data.admin">
         <span class="p-buttonset">
           <button pButton class="p-button-secondary"type="button"
-            label="Modifier" icon="pi pi-pencil"></button>
+            label="Modifier" icon="pi pi-pencil" (click)="gestionCompte.mode='modification'"></button>
           <button pButton class="p-button-secondary" type="button"
           (click)="suppression()"
             label="Supprimer" icon="pi pi-trash"
@@ -51,6 +51,9 @@
         </span>
       </div>
     </div>
+    <ng-template #ModifBlock>
+      <home-compte-modif [vet]="vet" (modeEmit)="gestionCompte.mode = $event"></home-compte-modif>
+    </ng-template>
   </fieldset>
   <fieldset>
     <legend><h3>Abonnement</h3></legend>
@@ -93,3 +96,4 @@
     </div>
   </fieldset>
 </div>
+

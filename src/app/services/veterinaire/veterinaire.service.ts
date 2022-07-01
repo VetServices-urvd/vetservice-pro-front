@@ -3,7 +3,7 @@ import { Veterinaire } from '../../models/veterinaire.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { MOCK_FILE } from '../../models/common.model';
+import { MOCK_FILE, UpdatePayload } from '../../models/common.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,15 @@ export class VeterinaireService {
         return rep;
       })
     );
+  }
+
+  update(payload?: UpdatePayload):Observable<boolean> {
+    return this.http.post(this.url, payload)
+      .pipe(
+        map((e:any) => {
+          console.log("API veterinaire update: "+e.status);
+          return e.status === 'SUCCES';
+        })
+      );
   }
 }

@@ -1,0 +1,11 @@
+label, h4 {
+  font-weight: bold;
+  padding-right: 1%;
+}
+.block {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  justify-content: center;
+  //background-color: white;
+}

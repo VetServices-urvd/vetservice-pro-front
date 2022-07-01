@@ -27,6 +27,5 @@ export class CompteSupprimeAlertComponent implements OnInit {
       summary: "Confirmation",
       detail: "L'abonnement à été renouveller !"
     });
-    return true;
   }
 }
