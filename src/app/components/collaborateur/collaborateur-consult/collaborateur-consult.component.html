@@ -22,12 +22,12 @@
     <button mat-button class="primary-color-btn"
       style="align-self:flex-start;"
       (click)="launch('modification')"
-      [disabled]="!enable_allowed">Modification</button>
+      [disabled]="!enable_allowed && !adminIsUser">Modification</button>
     <button mat-button
     style="align-self:flex-end;"
     class="primary-color-btn"
       (click)="launch('supression')"
-      [disabled]="!enable_allowed">Supression</button>
+      [disabled]="!enable_allowed ">Supression</button>
   </mat-card-actions>
   <!-- <ng-template #Allowed>
     <mat-card-actions

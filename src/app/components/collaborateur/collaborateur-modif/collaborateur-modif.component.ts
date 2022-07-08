@@ -12,6 +12,7 @@ export class CollaborateurModifComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
   @Input() enable_allowed = true;
+  @Input() adminIsUser:boolean = false;
   @Input() collaborateur: Collaborateur = <Collaborateur>{};
   @Output() ope: EventEmitter<GestionMode> = new EventEmitter<GestionMode>();
   hide = true;

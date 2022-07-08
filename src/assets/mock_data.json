@@ -13,7 +13,7 @@
         "fonction": "",
         "specialite": null,
         "cliniqueref": "idcli1",
-        "admin": false,
+        "admin": true,
         "civilite": "Mr"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhMTgyYzVlZC00Yzg2LTQ3N2MtYjg3NC1iNjgxYWJiMzUyMWJfdGVzdF92ZXQiLCJpYXQiOjE2NTY1NDU5NDgsImV4cCI6MTY1NjU0Nzc0OH0.hGmm2NqiJm-w3uPuWlurjSaAg-1_o77pDHcjG8vTNWI"
@@ -40,7 +40,7 @@
       "prenom": "Patrick",
       "emailPro":"pvichen@email.vet",
       "fonction":"Assistant",
-      "admin": false,
+      "admin": true,
       "cliniqueref":"idcli1"
     },
     {

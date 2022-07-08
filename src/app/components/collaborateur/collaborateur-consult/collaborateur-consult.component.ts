@@ -9,6 +9,7 @@ import { GestionMode } from '../../../models/common.model';
 })
 export class CollaborateurConsultComponent implements OnInit {
   @Input() enable_allowed: boolean = true;
+  @Input() adminIsUser!:boolean;
   @Input() user: Collaborateur = <Collaborateur>{};
   @Output() ope: EventEmitter<GestionMode> = new EventEmitter<GestionMode>();
   constructor() { }

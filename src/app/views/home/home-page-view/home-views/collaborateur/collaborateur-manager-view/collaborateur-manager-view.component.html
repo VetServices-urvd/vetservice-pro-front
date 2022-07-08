@@ -7,6 +7,7 @@
     <div *ngSwitchCase="'consultation'">
         <home-collaborateur-consult
           [enable_allowed]="user.admin"
+          [adminIsUser]="true"
           (ope)="getMode($event)"
           [user]="user">
         </home-collaborateur-consult>
@@ -14,6 +15,7 @@
     <div *ngSwitchCase="'modification'">
       <home-collaborateur-modif
         [enable_allowed]="user.admin"
+        [adminIsUser]="true"
         (ope)="getMode($event)"
         [collaborateur]="user">
       </home-collaborateur-modif>
@@ -21,6 +23,7 @@
     <div *ngSwitchDefault>
       <home-collaborateur-consult
       [enable_allowed]="user.admin"
+      [adminIsUser]="true"
         (ope)="getMode($event)"
         [user]="user">
       </home-collaborateur-consult>
