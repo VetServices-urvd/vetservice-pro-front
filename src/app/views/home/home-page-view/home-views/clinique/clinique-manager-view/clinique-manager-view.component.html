@@ -5,7 +5,7 @@
   <fieldset [ngSwitch]="clinique_user_gestion.mode">
     <legend><h3>Clinique d'affectation</h3></legend>
 
-    <div *ngSwitchCase="'consultation'">
+    <div class="content-set" *ngSwitchCase="'consultation'">
         <home-clinique-consult
           (ope)="getMode($event)"
           [enable_allowed]="user.admin"
@@ -13,7 +13,7 @@
         </home-clinique-consult>
 
     </div>
-    <div *ngSwitchCase="'modification'">
+    <div class="content-set" *ngSwitchCase="'modification'">
       <home-clinique-modif
         (ope)="getMode($event)"
         [enable_allowed]="user.admin"
@@ -21,7 +21,7 @@
       </home-clinique-modif>
 
     </div>
-    <div *ngSwitchDefault>
+    <div class="content-set" *ngSwitchDefault>
       <home-clinique-consult
           (ope)="getMode($event)"
           [enable_allowed]="user.admin"
@@ -32,7 +32,7 @@
 
   <fieldset *ngIf="cliniquesGestion && cliniquesGestion.length > 0;else NoAutre">
     <legend><h3>Autres cliniques</h3></legend>
-    <div *ngFor="let clinique of cliniquesGestion; index as i" id="i">
+    <div class="content-set" *ngFor="let clinique of cliniquesGestion; index as i" id="i">
       <ng-container [ngSwitch]="clinique.mode">
         <home-clinique-consult
           *ngSwitchCase="'consultation'"

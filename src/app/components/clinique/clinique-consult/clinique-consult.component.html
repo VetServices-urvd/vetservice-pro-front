@@ -38,18 +38,16 @@
   </div>
 
   <mat-divider inset></mat-divider>
-  <mat-card-actions *ngIf="!enable_allowed; else Allowed"
+  <mat-card-actions *ngIf="!enable_allowed"
     style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
     <button mat-button class="primary-color-btn"
       style="align-self:flex-start;"
-      (click)="launch('modification')"
-      disabled>Modification</button>
+      (click)="launch('modification')">Modification</button>
     <button mat-button
       style="align-self:flex-end;"
-      class="primary-color-btn"
-      disabled>Suppression</button>
+      class="primary-color-btn" (click)="deleteAction()">Suppression</button>
   </mat-card-actions>
-  <ng-template #Allowed>
+  <!-- <ng-template #Allowed>
     <mat-card-actions
       style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;gap:20px 10px;width: max-content;">
       <button mat-button class="primary-color-btn"
@@ -58,7 +56,7 @@
       <button mat-button
       style="align-self:flex-end;"
       class="primary-color-btn"
-        (click)="deleteAction()">Suppression</button>
+        ">Suppression</button>
     </mat-card-actions>
-  </ng-template>
+  </ng-template> -->
 </mat-card>

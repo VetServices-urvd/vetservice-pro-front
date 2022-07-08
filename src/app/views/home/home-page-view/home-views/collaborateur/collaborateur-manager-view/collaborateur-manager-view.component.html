@@ -4,7 +4,7 @@
   </div>
   <fieldset [ngSwitch]="user_mode">
     <legend><h3>Votre identité</h3></legend>
-    <div *ngSwitchCase="'consultation'">
+    <div class="content-set" *ngSwitchCase="'consultation'">
         <home-collaborateur-consult
           [enable_allowed]="user.admin"
           [adminIsUser]="true"
@@ -12,7 +12,7 @@
           [user]="user">
         </home-collaborateur-consult>
     </div>
-    <div *ngSwitchCase="'modification'">
+    <div  class="content-set" *ngSwitchCase="'modification'">
       <home-collaborateur-modif
         [enable_allowed]="user.admin"
         [adminIsUser]="true"
@@ -20,7 +20,7 @@
         [collaborateur]="user">
       </home-collaborateur-modif>
     </div>
-    <div *ngSwitchDefault>
+    <div  class="content-set" *ngSwitchDefault>
       <home-collaborateur-consult
       [enable_allowed]="user.admin"
       [adminIsUser]="true"
@@ -32,7 +32,7 @@
 
   <fieldset *ngIf="collabsGestion && collabsGestion.length > 0;else NoAutre">
     <legend><h3>Autres collaborateurs</h3></legend>
-    <div *ngFor="let collab of collabsGestion; index as i">
+    <div class="content-set" class="content-set" *ngFor="let collab of collabsGestion; index as i">
       <ng-container [ngSwitch]="collab.mode">
         <home-collaborateur-consult
           *ngSwitchCase="'consultation'"
