@@ -15,11 +15,13 @@ export class HomePageViewComponent implements OnInit {
     {num: 0, disable: false, title: "Gestion des collaborateurs",  iconName: "group", selected: true,
       route: LINKS.collaborateur},
     {num: 1, disable: false, title: "Gestions des cliniques", iconName: "health_and_safety", selected: false,
-    route: LINKS.clinique},
+      route: LINKS.clinique},
     {num: 2, disable: false, title: "Compte et abonnement", iconName: "manage_accounts", selected: false, endofCategorie:true,
-    route: LINKS.compte_abonnement},
+      route: LINKS.compte_abonnement},
     {num: 3, disable: false, title: "Gestion des rendez-vous", iconName: "edit_calendar", selected: false },
-    {num: 4, disable: false, title: "Vos catalogues produits", iconName: "medication", selected: false }
+    {num: 4, disable: false, title: "Vos prestations de services", iconName: "medication", selected: false,
+     route: LINKS.prestation },
+    {num: 5, disable: false, title: "Vos catalogues produits", iconName: "store", selected: false }
   ];
 
   constructor(private primengConfig: PrimeNGConfig,
@@ -64,6 +66,9 @@ export class HomePageViewComponent implements OnInit {
       case 3:
         break;
       case 4:
+        this.navigationService.navigateTo('veterinaire/home/prestation');
+        break;
+      case 5:
         break;
       default:
         break;

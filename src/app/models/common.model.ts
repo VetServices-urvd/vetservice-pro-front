@@ -28,7 +28,8 @@ export interface SideMenuItem {
 export const LINKS = {
   collaborateur: 'veterinaire/home/collaborateur',
   clinique: 'veterinaire/home/clinique',
-  compte_abonnement: 'veterinaire/home/compte&abonnement'
+  compte_abonnement: 'veterinaire/home/compte&abonnement',
+  prestation: 'veterinaire/home/prestation'
 }
 export const MOCK_FILE = '../../assets/mock_data.json'
 export function getUrl(path:string) {

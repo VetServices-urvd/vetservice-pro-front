@@ -6,23 +6,24 @@
     <legend><h3>Votre identité</h3></legend>
     <div *ngSwitchCase="'consultation'">
         <home-collaborateur-consult
+          [enable_allowed]="user.admin"
           (ope)="getMode($event)"
           [user]="user">
         </home-collaborateur-consult>
-
     </div>
     <div *ngSwitchCase="'modification'">
       <home-collaborateur-modif
+        [enable_allowed]="user.admin"
         (ope)="getMode($event)"
         [collaborateur]="user">
       </home-collaborateur-modif>
-
     </div>
     <div *ngSwitchDefault>
       <home-collaborateur-consult
-          (ope)="getMode($event)"
-          [user]="user">
-        </home-collaborateur-consult>
+      [enable_allowed]="user.admin"
+        (ope)="getMode($event)"
+        [user]="user">
+      </home-collaborateur-consult>
     </div>
   </fieldset>
 
@@ -36,14 +37,12 @@
           (ope)="getMode2($event, i)"
           [user]="collab.model">
         </home-collaborateur-consult>
-        <!-- <div *ngSwitchCase="'modification'"> -->
         <home-collaborateur-modif
           *ngSwitchCase="'modification'"
           [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"
           [collaborateur]="collab.model">
         </home-collaborateur-modif>
-        <!-- </div> -->
         <home-collaborateur-consult
           [enable_allowed]="user.admin"
           (ope)="getMode2($event, i)"

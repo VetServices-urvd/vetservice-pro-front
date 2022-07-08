@@ -24,6 +24,7 @@ import { CompteSupprimeAlertComponent } from '../../../components/compte/compte-
 import { AdresseFormComponent } from '../../../components/clinique/adresse-form/adresse-form.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http';
+import { VosPrestationServicesComponent } from './home-views/vos-prestation-services/vos-prestation-services.component';
 
 
 
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     CliniqueDeleteAlertComponent,
     AbonnementReactivationAlertComponent,
     CompteModifComponent,
-    CompteSupprimeAlertComponent
+    CompteSupprimeAlertComponent,
+    VosPrestationServicesComponent
   ],
   imports: [
     CommonModule,

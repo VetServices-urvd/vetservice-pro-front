@@ -1,0 +1,94 @@
+<div>
+  <div>
+    <h2 style="font-weight:bold">{{title}}</h2>
+  </div>
+  <fieldset>
+    <legend><h3>catalogue de services</h3></legend>
+    <div class="content-set" *ngIf="prestations.length > 0; else EmptyBlock">
+      <!-- <h4>Disponibilités</h4> -->
+      <p-table [value]="gestionPrestations" responsiveLayout="scroll" style="box-shadow:1px 1px 1px">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>service</th>
+                <th>prix (euros)</th>
+                <th>Animaux</th>
+                <th *ngIf="user.data.admin">Action Modification</th>
+                <th *ngIf="user.data.admin">Action Suppression</th>
+                <th *ngIf="user.data.admin && !hide_confirm">Action Confirmation</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-prestation>
+            <tr>
+                <td *ngIf="prestation.mode==='consultation';else modifInputS">
+                  {{prestation.model.service}}
+                </td>
+                <ng-template #modifInputS>
+                  <td>
+                    <!-- <input  [(ngModel)]="service_change" pInputText> -->
+                    <p-dropdown [options]="PRESTATION_SELECT" [(ngModel)]="service_change"
+                      ></p-dropdown>
+                  </td>
+                </ng-template>
+                <td *ngIf="prestation.mode==='consultation';else modifInputP">
+                  {{prestation.model.prix}}
+                </td>
+                <ng-template  #modifInputP>
+                  <td>
+                    <p-inputNumber [(ngModel)]="prix_change"
+                      mode="decimal">
+                    </p-inputNumber>
+                  </td>
+                </ng-template>
+                <td *ngIf="prestation.mode==='consultation';else modifInputA">
+                  {{prestation.model.animaux}}
+                </td>
+                <ng-template  #modifInputA>
+                  <td>
+                      <p-selectButton [options]="ANIMAL_SELECT" [(ngModel)]="animals_change"
+                      (onOptionClick)="optionAnimal($event)" (onChange)="change($event)" [multiple]="true"></p-selectButton>
+                  </td>
+                </ng-template>
+                <td *ngIf="user.data.admin" style="text-align: center;">
+                  <div *ngIf="prestation.mode==='consultation'">
+                    <button mat-mini-fab color="warn" (click)="modifier(prestation)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </div>
+                  <div *ngIf="prestation.mode==='modification' || prestation.mode==='creation'">
+                    <br>
+                    <button mat-mini-fab color="warn" (click)="annuler(prestation)">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </div>
+                </td>
+                <td *ngIf="user.data.admin" style="text-align: center;">
+                  <button mat-mini-fab color="warn" (click)="delete(prestation)"
+                    [disabled]="prestation.mode==='modification' || prestation.mode==='creation'">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                </td>
+                <td *ngIf="prestation.mode==='modification' || prestation.mode==='creation'">
+                  <button mat-mini-fab color="warn" (click)="confirmOnAddOrModify(prestation)"
+                    [disabled]="!inputChange(prestation)">
+                    <mat-icon>check</mat-icon>
+                  </button>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <ng-template  #EmptyBlock>
+      <div class="content-set">
+         <h3>Aucune prestation n'a été enregistrer, rajouter !</h3>
+      </div>
+    </ng-template>
+    <div *ngIf="user.data.admin">
+      <button mat-mini-fab color="primary" (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div>
+
+    </div>
+  </fieldset>
+</div>

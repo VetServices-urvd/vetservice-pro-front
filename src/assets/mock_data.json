@@ -13,7 +13,7 @@
         "fonction": "",
         "specialite": null,
         "cliniqueref": "idcli1",
-        "admin": true,
+        "admin": false,
         "civilite": "Mr"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhMTgyYzVlZC00Yzg2LTQ3N2MtYjg3NC1iNjgxYWJiMzUyMWJfdGVzdF92ZXQiLCJpYXQiOjE2NTY1NDU5NDgsImV4cCI6MTY1NjU0Nzc0OH0.hGmm2NqiJm-w3uPuWlurjSaAg-1_o77pDHcjG8vTNWI"
@@ -40,7 +40,7 @@
       "prenom": "Patrick",
       "emailPro":"pvichen@email.vet",
       "fonction":"Assistant",
-      "admin": true,
+      "admin": false,
       "cliniqueref":"idcli1"
     },
     {
@@ -69,5 +69,17 @@
       "disponibilite":"[Lun-Mar-Mer-Jeu-Ven].8:30-17:30/Sam.9:00-14:00",
       "vetref": "idv1"
     }
-  ]
+  ],
+  "prestations":{
+    "status":"SUCCES",
+    "data": [
+      {
+        "prestaid":"idpre1",
+        "service": "consultation générale",
+        "animaux": "chats - chiens - NAC",
+        "prix":42.99,
+        "vetref": "idv1"
+      }
+    ]
+  }
 }

@@ -13,7 +13,11 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {TooltipModule} from 'primeng/tooltip';
-
+import {CheckboxModule} from 'primeng/checkbox';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [],
   imports: [
@@ -32,7 +36,12 @@ import {TooltipModule} from 'primeng/tooltip';
     TableModule,
     ConfirmPopupModule,
     ToastModule,
-    TooltipModule
+    TooltipModule,
+    CheckboxModule,
+    InputNumberModule,
+    MultiSelectModule,
+    SelectButtonModule,
+    DropdownModule
   ]
 })
 export class PrimengModule { }

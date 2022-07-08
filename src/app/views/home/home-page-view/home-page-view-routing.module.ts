@@ -7,6 +7,7 @@ import { HomePageViewComponent } from './home-page-view.component';
 import { CollaborateurManagerViewComponent } from './home-views/collaborateur/collaborateur-manager-view/collaborateur-manager-view.component';
 import { CliniqueManagerViewComponent } from './home-views/clinique/clinique-manager-view/clinique-manager-view.component';
 import { CompteAbonnementViewComponent } from './home-views/compte/compte-abonnement-view/compte-abonnement-view.component';
+import { VosPrestationServicesComponent } from './home-views/vos-prestation-services/vos-prestation-services.component';
 
 const routesChilds: Routes = [
     {
@@ -26,6 +27,11 @@ const routesChilds: Routes = [
         {
           path:'compte&abonnement',
           component: CompteAbonnementViewComponent,
+          pathMatch:'full'
+        },
+        {
+          path:'prestation',
+          component: VosPrestationServicesComponent,
           pathMatch:'full'
         },
         {

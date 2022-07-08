@@ -2,20 +2,21 @@
   <div class="modif-block-btn">
     <div>
       <button mat-button class="primary-color-btn"
-      (click)="launch('consultation')">Consultation</button>
+      (click)="launch('consultation')"
+      >Consultation</button>
     </div>
     <div >
-      <button mat-button *ngIf="!enable_allowed; else Allowed"
+      <button mat-button
       class="primary-color-btn"
       (click)="launch('supression')"
-      disabled>Supression</button>
+      [disabled]="!enable_allowed">Supression</button>
     </div>
-    <ng-template #Allowed>
-      <!-- <div> -->
+    <!-- <ng-template #Allowed>
+      <div>
         <button mat-button class="primary-color-btn"
-        (click)="launch('supression')">Supression</button>
-      <!-- </div> -->
-    </ng-template>
+        (click)="launch('supression')"  [disabled]="enable_allowed">Supression</button>
+      </div>
+    </ng-template> -->
   </div><br>
 
   <div style="background-color: white;display: flow-root; padding-left:20px">
