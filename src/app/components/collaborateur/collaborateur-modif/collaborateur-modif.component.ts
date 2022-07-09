@@ -23,7 +23,7 @@ export class CollaborateurModifComponent implements OnInit {
     this.collabModifyForm = this.fb.group({
       nom: [this.collaborateur.nom],
       prenom: [this.collaborateur.prenom],
-      email: [this.collaborateur.emailPro],
+      email: [this.collaborateur.emailpro],
       admin: [false],
       mdp_confirm: [''],
       mdp_change: ['']

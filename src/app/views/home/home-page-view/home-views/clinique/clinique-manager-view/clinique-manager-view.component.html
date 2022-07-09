@@ -8,7 +8,7 @@
     <div class="content-set" *ngSwitchCase="'consultation'">
         <home-clinique-consult
           (ope)="getMode($event)"
-          [enable_allowed]="user.admin"
+          [enable_allowed]="currentUser.data.admin"
           [clinique]="clinique_user_gestion.model">
         </home-clinique-consult>
 
@@ -16,7 +16,7 @@
     <div class="content-set" *ngSwitchCase="'modification'">
       <home-clinique-modif
         (ope)="getMode($event)"
-        [enable_allowed]="user.admin"
+        [enable_allowed]="currentUser.data.admin"
         [clinique]="clinique_user_gestion.model">
       </home-clinique-modif>
 
@@ -24,7 +24,7 @@
     <div class="content-set" *ngSwitchDefault>
       <home-clinique-consult
           (ope)="getMode($event)"
-          [enable_allowed]="user.admin"
+          [enable_allowed]="currentUser.data.admin"
           [clinique]="clinique_user_gestion.model">
         </home-clinique-consult>
     </div>
@@ -36,21 +36,21 @@
       <ng-container [ngSwitch]="clinique.mode">
         <home-clinique-consult
           *ngSwitchCase="'consultation'"
-          [enable_allowed]="user.admin"
+          [enable_allowed]="currentUser.data.admin"
           (ope)="getMode2($event, i)"
           [clinique]="clinique.model">
         </home-clinique-consult>
     <!-- <div *ngSwitchCase="'modification'"> -->
         <home-clinique-modif
           *ngSwitchCase="'modification'"
-          [enable_allowed]="user.admin"
+          [enable_allowed]="currentUser.data.admin"
           (ope)="getMode2($event, i)"
           [clinique]="clinique.model">
         </home-clinique-modif>
       <!-- </div> -->
         <home-clinique-consult
           (ope)="getMode2($event, i)"
-          [enable_allowed]="user.admin"
+          [enable_allowed]="currentUser.data.admin"
           [clinique]="clinique.model"
           *ngSwitchDefault>
         </home-clinique-consult>

@@ -5,6 +5,9 @@ import { GestionMode, ModelGestion } from '../../../../../../models/common.model
 import { ConfirmationService, MessageService } from "primeng/api";
 import { CliniqueDeleteAlertComponent } from '../../../../../../components/clinique/clinique-delete-alert/clinique-delete-alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CliniqueService } from '../../../../../../services/clinique/clinique.service';
+import { UserService } from '../../../../../../services/user/user.service';
+import { CurrentUser } from '../../../../../../models/user.model';
 
 @Component({
   selector: 'app-clinique-manager-view',
@@ -13,35 +16,31 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CliniqueManagerViewComponent implements OnInit {
   title = 'Clinique';
-  user: Collaborateur = <Collaborateur>{};
+  currentUser: CurrentUser = <CurrentUser>{};
   clinique_user_gestion:ModelGestion<Clinique> = <ModelGestion<Clinique>>{};
   cliniquesGestion: ModelGestion<Clinique>[] =  [];
 
-  constructor() { }
+  constructor(private cliniqueService:CliniqueService,
+    private userService:UserService) { }
 
   ngOnInit(): void {
-    this.user.clinique = {adresse: "46 Rue oaks stanton, 82780 faraday", tel: "0634017279",
-      disponibilite:"[Lun-Mar-Mer-Jeu-Ven].8:30-18:00"};
-      this.user.admin = true;
-    this.clinique_user_gestion = {mode: 'consultation',
-      model:Object.assign({}, this.user.clinique)};
-
-      const autre_lieu = {adresse: "51-53 Avenue Martin Dupres, 82780 faraday",
-        tel: "0634017279", disponibilite:"[Lun-Mar-Mer-Jeu-Ven].8:30-17:30/Sam.9:00-14:00"}
-      this.cliniquesGestion.push({mode: 'consultation',
-        model: autre_lieu});
-  };
-  // ngDoCheck():void{
-  //   console.log("Check > " + this.clinique_user_gestion.mode);
-  //   if(this.clinique_user_gestion.mode === 'supression') {
-  //     this.deleteAction(this.clinique_user_gestion.model)
-  //   }
-  //   this.cliniquesGestion.forEach(cg =>{
-  //     if(cg.mode === 'supression' ){
-  //       this.deleteAction(cg.model);
-  //     }
-  //   });
-  // }
+    this.userService.get().then((val: CurrentUser) => {
+      this.currentUser = val;
+    });
+    this.cliniqueService.getAll().subscribe((results:Clinique[]) => {
+      if(this.currentUser && results.length>0){
+        this.clinique_user_gestion ={mode:"consultation",
+         model:results.filter(c => {
+         return c.adresse === this.currentUser.data.adresse &&
+          c.vetref === this.currentUser.data.vetref;
+        })[0]}
+        if(results.length > 1){
+          this.cliniquesGestion = results.filter(c =>c.adresse !== this.currentUser.data.adresse)
+          .map(c => <ModelGestion<Clinique>>{mode:"consultation", model:c});
+        }
+      }
+    });
+  }
 
   getMode(mode:GestionMode) {
     console.log(mode);

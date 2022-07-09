@@ -1,6 +1,5 @@
 
 export interface Clinique {
-  cliniqueid?: string
   adresse: string;
   pos_long?: number,
   pos_lat?: number,

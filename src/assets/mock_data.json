@@ -1,18 +1,16 @@
 {
   "auth":{
     "data": {
-        "cliniqueid": "idcli1",
-        "adresse": "145 bis rue bidouille 75005",
+        "adresse": "46 Rue oaks stanton, 82780 faraday",
         "vetref": "idv1",
         "tel": "",
         "disponibilite": "",
-        "collaborateurid": "idcol1",
         "nom": "",
         "prenom": "",
-        "emailpro": "admin@test.fr",
+        "emailpro": "pvichen@email.vet",
         "fonction": "",
         "specialite": null,
-        "cliniqueref": "idcli1",
+        "cliniqueref": "46 Rue oaks stanton, 82780 faraday",
         "admin": false,
         "civilite": "Mr"
     },
@@ -34,36 +32,32 @@
   },
   "collaborateurs": [
     {
-      "collaborateurid": "idcol1",
       "civilite": "Mr",
       "nom":"ST-VINCHEN",
       "prenom": "Patrick",
-      "emailPro":"pvichen@email.vet",
+      "emailpro":"pvichen@email.vet",
       "fonction":"Assistant",
       "admin": false,
-      "cliniqueref":"idcli1"
+      "cliniqueref":"46 Rue oaks stanton, 82780 faraday"
     },
     {
-      "collaborateurid": "idcol2",
       "civilite": "Mr",
       "nom":"Walls",
       "prenom": "Goerge",
-      "emailPro":"gwalls@email.eu",
+      "emailpro":"gwalls@email.eu",
       "fonction":"Docteur",
       "admin": false,
-      "cliniqueref":"idcli1"
+      "cliniqueref":"46 Rue oaks stanton, 82780 faraday"
     }
   ],
   "cliniques":[
     {
-      "cliniqueid":"idcli1",
       "adresse": "46 Rue oaks stanton, 82780 faraday",
       "tel": "0634017279",
       "disponibilite":"[Lun-Mar-Mer-Jeu-Ven].8:30-18:00",
       "vetref": "idv1"
     },
     {
-      "cliniqueid":"idcli2",
       "adresse": "51-53 Avenue Martin Dupres, 82780 faraday",
       "tel": "0634017279",
       "disponibilite":"[Lun-Mar-Mer-Jeu-Ven].8:30-17:30/Sam.9:00-14:00",

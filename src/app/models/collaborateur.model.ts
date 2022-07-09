@@ -3,11 +3,10 @@ import { Clinique } from './clinique.model';
 
 
 export interface Collaborateur{
-  collaborateurid?:string;
   civilite: Civilite;
   nom: string;
   prenom: string;
-  emailPro: string;
+  emailpro: string;
   fonction: string;
   admin: boolean;
   specialite?: string;
