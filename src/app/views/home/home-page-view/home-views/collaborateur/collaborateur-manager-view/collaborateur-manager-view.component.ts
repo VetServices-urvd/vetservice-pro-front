@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Collaborateur } from '../../../../../../models/collaborateur.model';
 import { GestionMode, ModelGestion } from '../../../../../../models/common.model';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -8,13 +8,15 @@ import { StateStore } from '../../../../../../services/state/state.store';
 import { CollaborateurService } from '../../../../../../services/collaborateur/collaborateur.service';
 import { CurrentUser } from '../../../../../../models/user.model';
 import { UserService } from '../../../../../../services/user/user.service';
+import { LoadingViewModel } from '../../../../../default-view/loader-view/loader-view.component';
 
 @Component({
   selector: 'app-collaborateur-manager-view',
   templateUrl: './collaborateur-manager-view.component.html',
   styleUrls: ['./collaborateur-manager-view.component.scss']
 })
-export class CollaborateurManagerViewComponent implements OnInit {
+export class CollaborateurManagerViewComponent implements OnInit, DoCheck, LoadingViewModel {
+  data_load:boolean;
   title = "Collaborateur";
   currentUser!: CurrentUser;
   user!: Collaborateur;
@@ -22,12 +24,14 @@ export class CollaborateurManagerViewComponent implements OnInit {
   collabsGestion: ModelGestion<Collaborateur>[] = [];
   constructor(public dialog: MatDialog, private stateStore: StateStore,
     private collabService: CollaborateurService,
-    private userService: UserService) { }
+    private userService: UserService) {
+      this.data_load= false;
+     }
 
   ngOnInit(): void {
     this.userService.get().then((val: CurrentUser) => {
       this.currentUser = val;
-    })
+    });
 
     this.collabService.getAll().subscribe((c:Collaborateur[]) => {
       if(this.currentUser && c.length > 0){
@@ -45,12 +49,12 @@ export class CollaborateurManagerViewComponent implements OnInit {
       }
       console.log("COLLAB ME: " + JSON.stringify(this.user));
       console.log("COLLAB AUTRE: " + JSON.stringify(this.collabsGestion));
-
     });
-
-
   }
-
+  ngDoCheck(): void{
+    if(this.currentUser &&   (this.user  || this.collabsGestion)) this.data_load = true;
+    else this.data_load = false;
+  }
 
   getMode(mode:GestionMode) {
     console.log(mode);

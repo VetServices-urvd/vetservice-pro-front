@@ -18,6 +18,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [],
   imports: [
@@ -41,7 +43,9 @@ import {DropdownModule} from 'primeng/dropdown';
     InputNumberModule,
     MultiSelectModule,
     SelectButtonModule,
-    DropdownModule
+    DropdownModule,
+    InputTextareaModule,
+    CalendarModule
   ]
 })
 export class PrimengModule { }

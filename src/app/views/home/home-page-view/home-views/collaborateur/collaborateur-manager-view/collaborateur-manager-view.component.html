@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="data_load else ProgressLoader">
   <div>
     <h2 style="font-weight:bold">{{title}}</h2>
   </div>
@@ -65,3 +65,8 @@
 
   </ng-template>
 </div>
+
+<ng-template #ProgressLoader>
+  <app-loader-view>
+  </app-loader-view>
+</ng-template>

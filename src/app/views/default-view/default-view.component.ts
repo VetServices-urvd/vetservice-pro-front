@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultViewComponent implements OnInit {
 
   constructor() { }
-  icons:any[] = []
+  //icons:any[] = []
 
   ngOnInit(): void {
   }

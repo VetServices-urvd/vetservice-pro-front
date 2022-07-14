@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SideMenuItem, LINKS } from '../../../models/common.model';
 import { NavigationService } from '../../../services/navigation.service';
 import { PrimeNGConfig } from 'primeng/api';
+import { ResponsiveService } from '../../../services/state/responsive.service';
 
 @Component({
   selector: 'app-home-page-view',
@@ -18,17 +19,25 @@ export class HomePageViewComponent implements OnInit {
       route: LINKS.clinique},
     {num: 2, disable: false, title: "Compte et abonnement", iconName: "manage_accounts", selected: false, endofCategorie:true,
       route: LINKS.compte_abonnement},
-    {num: 3, disable: false, title: "Gestion des rendez-vous", iconName: "edit_calendar", selected: false },
+    {num: 3, disable: false, title: "Gestion des rendez-vous", iconName: "edit_calendar", selected: false,
+      route: LINKS.rendez_vous },
     {num: 4, disable: false, title: "Vos prestations de services", iconName: "medication", selected: false,
      route: LINKS.prestation },
-    {num: 5, disable: false, title: "Vos catalogues produits", iconName: "store", selected: false }
+    {num: 5, disable: false, title: "Vos catalogues produits", iconName: "store", selected: false,
+      route: LINKS.produit }
   ];
 
   constructor(private primengConfig: PrimeNGConfig,
-    private navigationService: NavigationService) { }
+    private navigationService: NavigationService,
+    private responsiveService: ResponsiveService){}
 
+  ngOnDestroy() {
+    this.responsiveService.destroyed.next();
+    this.responsiveService.destroyed.complete();
+  }
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    console.log("responsive screen "+ this.responsiveService.currentScreenSize);
     //let verifUrl: boolean | null = null;
     const url_current:string = window.location.href;
     this.menuitems.map(m => {
@@ -53,26 +62,31 @@ export class HomePageViewComponent implements OnInit {
     this.current_menu_index = menu.num;
     this.menuitems[this.current_menu_index].selected = true;
     console.log("Menu state: "+JSON.stringify(this.menuitems));
-    switch(menu.num){
-      case 0:
-        this.navigationService.navigateTo('veterinaire/home');
-        break;
-      case 1:
-        this.navigationService.navigateTo('veterinaire/home/clinique');
-        break;
-      case 2:
-        this.navigationService.navigateTo('veterinaire/home/compte&abonnement');
-        break;
-      case 3:
-        break;
-      case 4:
-        this.navigationService.navigateTo('veterinaire/home/prestation');
-        break;
-      case 5:
-        break;
-      default:
-        break;
+    if(menu &&  menu.route){
+      switch(menu.num){
+        case 0:
+          this.navigationService.navigateTo('veterinaire/home/collaborateur');
+          break;
+        case 1:
+          this.navigationService.navigateTo('veterinaire/home/clinique');
+          break;
+        case 2:
+          this.navigationService.navigateTo('veterinaire/home/compte&abonnement');
+          break;
+        case 3:
+          this.navigationService.navigateTo(menu.route);
+          break;
+        case 4:
+          this.navigationService.navigateTo('veterinaire/home/prestation');
+          break;
+        case 5:
+          this.navigationService.navigateTo(menu.route);
+          break;
+        default:
+          break;
+      }
     }
+
   }
 
 }

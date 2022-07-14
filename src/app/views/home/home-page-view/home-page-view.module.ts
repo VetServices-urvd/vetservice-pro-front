@@ -25,6 +25,9 @@ import { AdresseFormComponent } from '../../../components/clinique/adresse-form/
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http';
 import { VosPrestationServicesComponent } from './home-views/vos-prestation-services/vos-prestation-services.component';
+import { ProduitManagerViewComponent } from './home-views/produits/produit-manager-view/produit-manager-view.component';
+import { RendezVousManagerViewComponent } from './home-views/rendez-vous/rendez-vous-manager-view/rendez-vous-manager-view.component';
+import { LoaderViewComponent } from '../../default-view/loader-view/loader-view.component';
 
 
 
@@ -32,6 +35,7 @@ import { VosPrestationServicesComponent } from './home-views/vos-prestation-serv
   declarations: [
     HomePageViewComponent,
     DefaultViewComponent,
+    LoaderViewComponent,
     CollaborateurManagerViewComponent,
     CliniqueManagerViewComponent,
     CompteAbonnementViewComponent,
@@ -46,7 +50,9 @@ import { VosPrestationServicesComponent } from './home-views/vos-prestation-serv
     AbonnementReactivationAlertComponent,
     CompteModifComponent,
     CompteSupprimeAlertComponent,
-    VosPrestationServicesComponent
+    VosPrestationServicesComponent,
+    ProduitManagerViewComponent,
+    RendezVousManagerViewComponent
   ],
   imports: [
     CommonModule,
@@ -57,19 +63,6 @@ import { VosPrestationServicesComponent } from './home-views/vos-prestation-serv
     HttpClientModule,
     PrimengModule
   ],
-  // exports:[
-  //   CollaborateurConsultComponent,
-  //   CollaborateurModifComponent,
-  //   CollaborateurSupprimeAlertComponent,
-  //   CliniqueConsultComponent,
-  //   CliniqueModifComponent,
-  //   DisponibliteFormComponent,
-  //   AdresseFormComponent,
-  //   CliniqueDeleteAlertComponent,
-  //   AbonnementReactivationAlertComponent,
-  //   CompteModifComponent,
-  //   CompteSupprimeAlertComponent
-  // ],
   //schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [DatePipe, ConfirmationService, MessageService],
   bootstrap: [HomePageViewComponent]

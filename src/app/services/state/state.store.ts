@@ -14,31 +14,20 @@ export interface AppState {
 })
 export class StateStore {
 
-  constructor(private collabService: CollaborateurService,
-    private cliService: CliniqueService,
-    private vetService: VeterinaireService ){
-      this.init();
-    }
+  constructor(){}
 
-    private _state:AppState = {collaborateurs:[]};
+  calc_timestamp(step: number): number[]{
+      const arrHour = [];
+      for(let i = 800; i <= 1900; i + step){
 
-    // getstate<T>(): Observable<T> {
-    //   return new Observable((obs:any) =>{
+        if(i%60 === 0 || i%60 === 30 || i%60 === 40){
+          arrHour.push(i + 1);
+        }else{
+          arrHour.push(i);
+        }
+      }
+      return arrHour;
+  }
 
-    //     if (obs instanceof Array<Collaborateur>) {
-    //       obs.next(this._state.collaborateurs) ;
-    //     }
-    //     obs.complete();
-    //   });
-    // }
-
-    push<T>(payload: UpdatePayload){
-      return
-    }
-    private init(){
-      this.collabService.getAll().subscribe((r:any) => {
-        this._state.collaborateurs = r;
-      });
-    }
 
 }

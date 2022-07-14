@@ -8,6 +8,8 @@ import { CollaborateurManagerViewComponent } from './home-views/collaborateur/co
 import { CliniqueManagerViewComponent } from './home-views/clinique/clinique-manager-view/clinique-manager-view.component';
 import { CompteAbonnementViewComponent } from './home-views/compte/compte-abonnement-view/compte-abonnement-view.component';
 import { VosPrestationServicesComponent } from './home-views/vos-prestation-services/vos-prestation-services.component';
+import { RendezVousManagerViewComponent } from './home-views/rendez-vous/rendez-vous-manager-view/rendez-vous-manager-view.component';
+import { ProduitManagerViewComponent } from './home-views/produits/produit-manager-view/produit-manager-view.component';
 
 const routesChilds: Routes = [
     {
@@ -30,8 +32,18 @@ const routesChilds: Routes = [
           pathMatch:'full'
         },
         {
+          path:'rendez-vous',
+          component: RendezVousManagerViewComponent,
+          pathMatch:'full'
+        },
+        {
           path:'prestation',
           component: VosPrestationServicesComponent,
+          pathMatch:'full'
+        },
+        {
+          path:'produit',
+          component: ProduitManagerViewComponent,
           pathMatch:'full'
         },
         {

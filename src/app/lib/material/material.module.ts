@@ -20,6 +20,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LayoutModule } from '@angular/cdk/layout';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -44,7 +47,9 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     MatDialogModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule,
+    LayoutModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

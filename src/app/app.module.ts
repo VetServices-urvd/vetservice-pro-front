@@ -25,6 +25,7 @@ import { CollaborateurSupprimeAlertComponent } from './components/collaborateur/
 import { CollaborateurModifComponent } from './components/collaborateur/collaborateur-modif/collaborateur-modif.component';
 import { CollaborateurConsultComponent } from './components/collaborateur/collaborateur-consult/collaborateur-consult.component';
 import { HomePageViewModule } from './views/home/home-page-view/home-page-view.module';
+import { ResponsiveDirective } from './components/items/responsive.directive';
 
 @NgModule({
   declarations: [
@@ -33,19 +34,8 @@ import { HomePageViewModule } from './views/home/home-page-view/home-page-view.m
     InscriptionCollabViewComponent,
     AuthentificationViewComponent,
     HeaderNavSideComponent,
-    // DisponibliteFormComponent,
-    // AdresseFormComponent
-    // CollaborateurConsultComponent,
-    // CollaborateurModifComponent,
-    // CollaborateurSupprimeAlertComponent,
-    // CliniqueConsultComponent,
-    // CliniqueModifComponent,
-    // DisponibliteFormComponent,
-    // AdresseFormComponent,
-    // CliniqueDeleteAlertComponent,
-    // AbonnementReactivationAlertComponent,
-    // CompteModifComponent,
-    // CompteSupprimeAlertComponent
+    ResponsiveDirective,
+   // LoaderViewComponent,
   ],
   imports: [
     BrowserModule,

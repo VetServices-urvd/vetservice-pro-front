@@ -29,7 +29,9 @@ export const LINKS = {
   collaborateur: 'veterinaire/home/collaborateur',
   clinique: 'veterinaire/home/clinique',
   compte_abonnement: 'veterinaire/home/compte&abonnement',
-  prestation: 'veterinaire/home/prestation'
+  rendez_vous:'veterinaire/home/rendez-vous',
+  prestation: 'veterinaire/home/prestation',
+  produit: 'veterinaire/home/produit',
 }
 export const MOCK_FILE = '../../assets/mock_data.json'
 export function getUrl(path:string) {
@@ -44,3 +46,4 @@ export function getUrl(path:string) {
 export interface UpdatePayload {
   payload:any;
 }
+

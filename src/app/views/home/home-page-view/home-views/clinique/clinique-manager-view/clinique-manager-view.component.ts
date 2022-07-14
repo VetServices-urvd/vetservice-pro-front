@@ -29,8 +29,9 @@ export class CliniqueManagerViewComponent implements OnInit {
     });
     this.cliniqueService.getAll().subscribe((results:Clinique[]) => {
       if(this.currentUser && results.length>0){
-        this.clinique_user_gestion ={mode:"consultation",
-         model:results.filter(c => {
+        this.clinique_user_gestion = {
+          mode:"consultation",
+          model:results.filter(c => {
          return c.adresse === this.currentUser.data.adresse &&
           c.vetref === this.currentUser.data.vetref;
         })[0]}
