@@ -8,7 +8,7 @@
         "nom": "",
         "prenom": "",
         "emailpro": "pvichen@email.vet",
-        "fonction": "",
+        "fonction": "Assistant",
         "specialite": null,
         "cliniqueref": "46 Rue oaks stanton, 82780 faraday",
         "admin": false,
@@ -74,6 +74,29 @@
         "prix":42.99,
         "vetref": "idv1"
       }
+    ]
+  },
+  "clients": {
+    "status": "SUCCES",
+    "data": [
+        {
+            "nom": "LANDER",
+            "prenom": "Toto",
+            "email": "totolander@email.com",
+            "adresse_perso": null,
+            "tel_perso": null,
+            "mdp": "$2b$10$flqgdv1T9fYukPbXs/kQ7uJrPseI7Q68NeyB02uqsw5wacB68Ub9i",
+            "clinique_favoris": null
+        },
+        {
+            "nom": "PARKER",
+            "prenom": "Harry",
+            "email": "parkerh@email.com",
+            "adresse_perso": null,
+            "tel_perso": "0634017279",
+            "mdp": "motdepasse",
+            "clinique_favoris": null
+        }
     ]
   }
 }

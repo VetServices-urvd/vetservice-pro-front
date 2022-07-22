@@ -6,6 +6,6 @@ export interface AgendaItem {
   detail: string;
   dateDebut: Date;
   dateFin: Date;
-  heureDebut: string;
-  heureFin: string;
+  heureDebut: string | Date;
+  heureFin: string | Date;
 }

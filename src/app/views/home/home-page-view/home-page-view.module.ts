@@ -28,6 +28,7 @@ import { VosPrestationServicesComponent } from './home-views/vos-prestation-serv
 import { ProduitManagerViewComponent } from './home-views/produits/produit-manager-view/produit-manager-view.component';
 import { RendezVousManagerViewComponent } from './home-views/rendez-vous/rendez-vous-manager-view/rendez-vous-manager-view.component';
 import { LoaderViewComponent } from '../../default-view/loader-view/loader-view.component';
+import { AjoutClientAlertComponent } from '../../../components/client/ajout-client-alert/ajout-client-alert.component';
 
 
 
@@ -52,7 +53,8 @@ import { LoaderViewComponent } from '../../default-view/loader-view/loader-view.
     CompteSupprimeAlertComponent,
     VosPrestationServicesComponent,
     ProduitManagerViewComponent,
-    RendezVousManagerViewComponent
+    RendezVousManagerViewComponent,
+    AjoutClientAlertComponent,
   ],
   imports: [
     CommonModule,

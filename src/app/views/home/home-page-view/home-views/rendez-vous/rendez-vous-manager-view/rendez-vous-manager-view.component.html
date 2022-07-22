@@ -3,68 +3,67 @@
     <h2 style="font-weight:bold">{{title}}</h2>
     <p>{{subtitle}}</p>
   </div>
-  <fieldset>
-    <legend><h3><b>Agenda</b></h3></legend>
+  <fieldset style="padding-top: 5%;padding-bottom: 5%;">
+    <legend><h3><b>Prise de rdv</b></h3></legend>
     <div>
-      <!-- <div>
-        Type
-        <p-dropdown [options]="agenda_items_types" [(ngModel)]="new_agenda_item.type"></p-dropdown>
-      </div> -->
-      <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <mat-select [(ngModel)]="new_agenda_item.type">
-          <mat-option *ngFor="let type of agenda_items_types" value="type">{{type}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!-- <div>
-        Raison
-        <p-dropdown [options]="rdv_prestations"
-          [(ngModel)]="new_agenda_item.raison"
-          [editable]="true"></p-dropdown>
-      </div> -->
-      <mat-form-field appearance="fill">
-        <mat-label>Raison</mat-label>
-        <mat-select  [(ngModel)]="new_agenda_item.raison">
-          <mat-option *ngFor="let prestation of rdv_prestations" value="prestation">{{prestation}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field> -->
-      <div>
-        <h4>Details</h4>
-        <textarea [rows]="3" [cols]="40" pInputTextarea
-        [autoResize]="false" [placeholder]="new_agenda_item.type"></textarea>
-      </div>
-      <div>
-        <h4>{{new_agenda_item.type !== 'Absence' ? 'Date de départ':'Date'}}</h4>
-        <p-calendar [(ngModel)]="agenda_date" [disabledDays]="[0,7]" [readonlyInput]="false"
-          [selectionMode]="new_agenda_item.type ==='Absence'?'multiple':'single'" (onSelect)="select($event)">
-          <ng-template pTemplate="date" let-date>
-            <span [ngStyle]="{backgroundColor: date.getDay === today.getDay? 'green' : 'inherit'}">
-              {{date.day}}
-            </span>
-          </ng-template>
-        </p-calendar>
-      </div>
-      <div class="field col-12 md:col-4">
-        <label for="timeonly">heure de début</label>
-        <p-calendar [(ngModel)]="hDebut" [timeOnly]="true" (onSelect)="select($event)"
-          hourFormat="24" inputId="timeonly" [stepMinute]="15"></p-calendar>
-      </div>
-      <div class="field col-12 md:col-4">
-        <label for="timeonly">heure de fin</label>
-        <p-calendar [(ngModel)]="hFin" [timeOnly]="true"
-          hourFormat="24" inputId="timeonly" [stepMinute]="15" (onSelect)="select($event)"></p-calendar>
-      </div>
-      <table>
-        <tr *ngFor="let hour of arrHours">
-          <td>
-            {{hour}}
-          </td>
-        </tr>
-      </table>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title style="font-weight: bold;">
+            Ajouter un rendez-vous
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Raison</mat-label>
+          <mat-select [(ngModel)]="new_agenda_item.raison">
+            <mat-option *ngFor="let raison of rdv_prestations"
+            [value]="raison">{{raison}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="currentUser.data.fonction !== 'Docteur'">
+          <mat-form-field appearance="outline">
+            <mat-label>Destinataire</mat-label>
+            <!-- <input matInput [(ngModel)]="new_agenda_item.destinataire"> -->
+            <mat-select [(ngModel)]="new_agenda_item.destinataire">
+              <mat-option *ngFor="let doctor of  collab_doctors" [value]="doctor">{{doctor}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="display:flex;gap: 10px 10px;">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Client</mat-label>
+              <mat-select [(ngModel)]="new_agenda_item.destinataire">
+                <mat-option *ngFor="let client_name of  client_names" [value]="client_name">{{client_name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-divider [vertical]="true" ></mat-divider>
+          <p-button label="nouveau client" icon="pi pi-user-plus" iconPos="right"
+            class="p-button-help" (click)="new_client()"></p-button>
+        </div>
+        <div class="field col-12 md:col-4">
+          <h4>Date</h4>
+          <p-calendar [(ngModel)]="agenda_date" [disabledDays]="[0,7]" [readonlyInput]="false"
+            (onSelect)="select($event)">
+            <!-- <ng-template pTemplate="date" let-date>
+              <span [ngStyle]="{backgroundColor: date.getDay === today.getDay? 'green' : 'inherit'}">
+                {{date.day}}
+              </span>
+            </ng-template> -->
+          </p-calendar>
+        </div><br>
+        <div class="field col-12 md:col-4">
+          <label for="timeonly">heure de début</label>
+          <p-calendar [(ngModel)]="hDebut" [timeOnly]="true" (onSelect)="select($event)"
+            hourFormat="24" inputId="timeonly" [stepMinute]="15"></p-calendar>
+        </div>
+        <!-- <div class="field col-12 md:col-4">
+          <label for="timeonly">heure de fin</label>
+          <p-calendar [(ngModel)]="hFin" [timeOnly]="true"
+            hourFormat="24" inputId="timeonly" [stepMinute]="15" (onSelect)="select($event)"></p-calendar>
+        </div> -->
+      </mat-card>
     </div>
 
   </fieldset>

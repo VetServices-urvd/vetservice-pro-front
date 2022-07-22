@@ -1,0 +1,29 @@
+
+<h2 mat-dialog-title>Ajouter un nouveux client</h2>
+<mat-dialog-content class="mat-typography" style="padding-top: 6%;">
+  <div style="display:table-caption;">
+    <div>
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" pInputText  [(ngModel)]="new_client.nom"/>
+    </div>
+    <div>
+      <label>Prenom</label>
+      <input type="text" pInputText  [(ngModel)]="new_client.prenom"/>
+    </div>
+    <div>
+      <label>Prenom</label>
+      <input type="email" pInputText  [(ngModel)]="new_client.email"/>
+    </div>
+    <div>
+      <label>Telephone</label>
+      <p-inputMask [(ngModel)]="new_client.tel_perso" mask="9999999999"></p-inputMask>
+      <!-- <input type="text" pInputText  [(ngModel)]="new_client.prenom"/> -->
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button class="secondary-color-btn" mat-dialog-close>annuler</button>
+  <button mat-button class="secondary-color-btn"
+    (click)="action()"
+    [mat-dialog-close]="true" cdkFocusInitial>valider</button>
+</mat-dialog-actions>

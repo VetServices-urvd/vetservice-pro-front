@@ -10,9 +10,10 @@ export interface CurrentUser {
     cliniqueid:string;
     adresse:string;
     vetref:string;
-    collaborateurid:string;
+    //collaborateurid:string;
     nom:string;
     emailpro: string;
+    fonction:string;
     cliniqueref:string;
     admin:true;
   }

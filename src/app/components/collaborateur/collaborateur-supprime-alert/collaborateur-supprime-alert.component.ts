@@ -27,6 +27,7 @@ export class CollaborateurSupprimeAlertComponent implements OnInit {
   }
 
   action() {
+    //TODO SERVICE CALL
     console.log("delete " + JSON.stringify(this.collab.emailpro));
       this.messageService.add({
       severity: "info",

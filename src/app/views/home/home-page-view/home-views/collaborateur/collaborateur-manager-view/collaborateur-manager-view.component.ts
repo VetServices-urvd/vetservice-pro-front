@@ -22,7 +22,7 @@ export class CollaborateurManagerViewComponent implements OnInit, DoCheck, Loadi
   user!: Collaborateur;
   user_mode:GestionMode = 'consultation';
   collabsGestion: ModelGestion<Collaborateur>[] = [];
-  constructor(public dialog: MatDialog, private stateStore: StateStore,
+  constructor(public dialog: MatDialog,
     private collabService: CollaborateurService,
     private userService: UserService) {
       this.data_load= false;

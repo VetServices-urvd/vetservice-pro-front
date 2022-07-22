@@ -12,7 +12,7 @@ export class CollaborateurService {
 
   constructor(private http: HttpClient) { }
 
-  getAll():Observable<Collaborateur[]>{
+  getAll(val?:any, param?:string):Observable<Collaborateur[]>{
     return this.http.get<any>(MOCK_FILE)
     .pipe(
       map((e:any) => {

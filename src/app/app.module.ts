@@ -26,7 +26,6 @@ import { CollaborateurModifComponent } from './components/collaborateur/collabor
 import { CollaborateurConsultComponent } from './components/collaborateur/collaborateur-consult/collaborateur-consult.component';
 import { HomePageViewModule } from './views/home/home-page-view/home-page-view.module';
 import { ResponsiveDirective } from './components/items/responsive.directive';
-
 @NgModule({
   declarations: [
     AppComponent,
