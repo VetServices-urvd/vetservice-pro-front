@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  //api: 'http://localhost:3000/api',
+  api: 'http://localhost:3000/api',
   //api: 'https://vetservice-api.herokuapp.com/api', //semi-prod-api
-  api: 'https://vetservice-test.herokuapp.com/api', //testing-api
+  //api: 'https://vetservice-test.herokuapp.com/api', //testing-api
   mock_all: true,
   api_routes: [
     {path:'auth', mock: true},

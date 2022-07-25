@@ -16,7 +16,7 @@ import { LoadingViewModel } from '../../../../../default-view/loader-view/loader
 })
 export class CollaborateurManagerViewComponent implements OnInit, DoCheck, LoadingViewModel {
   data_load:boolean;
-  title = "Collaborateur";
+  title = "Espace collaborateur";
   currentUser!: CurrentUser;
   user!: Collaborateur;
   user_mode:GestionMode = 'consultation';
