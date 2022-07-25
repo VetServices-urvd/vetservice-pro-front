@@ -1,11 +1,8 @@
 
-export interface AgendaItem {
-  type: string;
+export interface RdvItem {
   destinataire: string; //seul: me, autre, plusieurs: docteurs, assistants, secretaire
   raison: string;
-  detail: string;
-  dateDebut: Date;
-  dateFin: Date;
-  heureDebut: string | Date;
-  heureFin: string | Date;
+  client: string;
+  datetime: Date;
+  heure: Date;
 }

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { MOCK_FILE, UpdatePayload } from '../../models/common.model';
+import { MOCK_FILE, UpdatePayload, QueryPayload, UpdateAnyPayload } from '../../models/common.model';
 import { HttpClient } from '@angular/common/http';
 import { Abonnement } from '../../models/abonnement.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IRequestGet, IRequestPush } from '../state/services.state';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AbonnementService {
+export class AbonnementService implements IRequestGet<Abonnement[]>, IRequestPush{
 
   constructor(private http: HttpClient) { }
   url = MOCK_FILE;
-  get(param?:string):Observable<Abonnement>{
+  getAll(payload?: QueryPayload):Observable<Abonnement[]>{
     return this.http.get<any>(this.url)
     .pipe(
       map((e:any) => {
@@ -23,7 +24,7 @@ export class AbonnementService {
     );
   }
 
-  update(payload: UpdatePayload){
-    //return this.http.get<any>(this.url)
+  update(payload: UpdateAnyPayload):Observable<any>{
+    return this.http.post<any>(this.url, null);
   }
 }

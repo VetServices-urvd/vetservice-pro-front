@@ -22,7 +22,7 @@
         </mat-form-field>
         <div *ngIf="currentUser.data.fonction !== 'Docteur'">
           <mat-form-field appearance="outline">
-            <mat-label>Destinataire</mat-label>
+            <mat-label>Assigner à</mat-label>
             <!-- <input matInput [(ngModel)]="new_agenda_item.destinataire"> -->
             <mat-select [(ngModel)]="new_agenda_item.destinataire">
               <mat-option *ngFor="let doctor of  collab_doctors" [value]="doctor">{{doctor}}</mat-option>
@@ -33,7 +33,7 @@
           <div>
             <mat-form-field appearance="outline">
               <mat-label>Client</mat-label>
-              <mat-select [(ngModel)]="new_agenda_item.destinataire">
+              <mat-select [(ngModel)]="new_agenda_item.client">
                 <mat-option *ngFor="let client_name of  client_names" [value]="client_name">{{client_name}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -44,25 +44,19 @@
         </div>
         <div class="field col-12 md:col-4">
           <h4>Date</h4>
-          <p-calendar [(ngModel)]="agenda_date" [disabledDays]="[0,7]" [readonlyInput]="false"
-            (onSelect)="select($event)">
-            <!-- <ng-template pTemplate="date" let-date>
-              <span [ngStyle]="{backgroundColor: date.getDay === today.getDay? 'green' : 'inherit'}">
-                {{date.day}}
-              </span>
-            </ng-template> -->
+          <p-calendar [(ngModel)]="new_agenda_item.datetime" [disabledDays]="[0,7]" [readonlyInput]="false"
+            (onSelect)="select($event, 'date')">
           </p-calendar>
         </div><br>
         <div class="field col-12 md:col-4">
-          <label for="timeonly">heure de début</label>
-          <p-calendar [(ngModel)]="hDebut" [timeOnly]="true" (onSelect)="select($event)"
-            hourFormat="24" inputId="timeonly" [stepMinute]="15"></p-calendar>
+          <h4>Heure de début</h4>
+          <p-calendar [timeOnly]="true" (onSelect)="select($event, 'hour')"
+            hourFormat="24" inputId="timeonly" [stepMinute]="15"
+            [minDate]="minDate" [maxDate]="maxDate" ></p-calendar>
+        </div><br>
+        <div>
+          <button mat-flat-button color="primary" (click)="addRdv()">Ajouter</button>
         </div>
-        <!-- <div class="field col-12 md:col-4">
-          <label for="timeonly">heure de fin</label>
-          <p-calendar [(ngModel)]="hFin" [timeOnly]="true"
-            hourFormat="24" inputId="timeonly" [stepMinute]="15" (onSelect)="select($event)"></p-calendar>
-        </div> -->
       </mat-card>
     </div>
 

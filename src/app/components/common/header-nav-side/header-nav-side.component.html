@@ -6,27 +6,34 @@
   <mat-toolbar-row>
     <h3 style="text-align:center;margin-left:40%;">Espace professionnel</h3>
   </mat-toolbar-row>
-  <mat-toolbar-row style="border: 1px solid white">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu btn">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="redirectTo('INSCRIPTION')">
-        <mat-icon>dialpad</mat-icon>
-        <span>Creer son compte</span>
+  <mat-toolbar-row style="border: 1px solid white;display:flex;justify-content:space-between;">
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu btn">
+        <mat-icon>menu</mat-icon>
       </button>
-      <button mat-menu-item (click)="redirectTo('CONNETION')">
-        <mat-icon>voicemail</mat-icon>
-        <span>Se connecter à son organisation</span>
-      </button>
-      <button mat-menu-item (click)="redirectTo('HOME')">
-        <mat-icon>notifications_on</mat-icon>
-        <span>Accueil</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="redirectTo('INSCRIPTION')">
+          <mat-icon>dialpad</mat-icon>
+          <span>Creer son compte</span>
+        </button>
+        <button mat-menu-item (click)="redirectTo('CONNETION')">
+          <mat-icon>voicemail</mat-icon>
+          <span>Se connecter à son organisation</span>
+        </button>
+        <button mat-menu-item (click)="redirectTo('HOME')">
+          <mat-icon>notifications_on</mat-icon>
+          <span>Accueil</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div *ngIf="logout_visible">
+      <button pButton pRipple type="button" icon="pi pi-sign-out"
+        class="p-button-rounded p-button-danger" (click)="logout()"></button>
+
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

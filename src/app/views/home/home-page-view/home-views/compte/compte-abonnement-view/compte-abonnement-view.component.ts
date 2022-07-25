@@ -32,25 +32,26 @@ export class CompteAbonnementViewComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
     this.userService.get().then((val: CurrentUser) => {
       this.user = val;
-    });
+      if(this.user){
+        this.vetService.getAll({value: this.user.data.vetref, query:'id'}).subscribe((v:Veterinaire[]) => {
+          if(v.length > 0){
+            this.vet = v[0];
+            const c = new CoordonneeBancaire();
+            this.coord_banq = this.vet.coordBanq || this.vet.coordBanq===''?c.parse(this.vet.coordBanq, true):this.coord_banq;
+            this.gestionCompte ={ mode:'consultation', model:this.vet}
+          }
+        });
 
-    this.vetService.get().subscribe((v:Veterinaire) => {
-      if(this.user && v){
-        this.vet = v;
-        const c = new CoordonneeBancaire();
-        this.coord_banq = this.vet.coordBanq || this.vet.coordBanq===''?c.parse(this.vet.coordBanq, true):this.coord_banq;
-        this.gestionCompte ={ mode:'consultation', model:this.vet}
+        this.abonnementService.getAll({value: this.user.data.vetref, query:'id'}).subscribe((args: Abonnement[]) => {
+          if(args.length > 0 ){
+            this.subscription = args[0];
+            console.log(this.subscription);
+          }
+        });
       }
     });
-
-    this.abonnementService.get().subscribe((arg: Abonnement) => {
-      if(arg) this.subscription = arg;
-      console.log(this.subscription);
-    });
-
   }
 
   /**Compte */
@@ -77,14 +78,14 @@ export class CompteAbonnementViewComponent implements OnInit {
     return end.getTime() > today.getTime();
   }
   activer(){
-    console.log('non')
-    const p:UpdatePayload = {payload:{actif:true}};
-    this.abonnementService.update(p);
+    console.log('non');
+    const payload = {body:{actif:true}};
+    this.abonnementService.update(payload);
   }
   desactiver(){
-    console.log('oui')
-    const p:UpdatePayload = {payload:{actif:false}};
-    this.abonnementService.update(p);
+    console.log('oui');
+    const payload = {body:{actif:false}};
+    this.abonnementService.update(payload);
   }
   reactiver(){
     this.dialog.open(AbonnementReactivationAlertComponent, {

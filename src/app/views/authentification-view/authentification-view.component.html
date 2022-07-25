@@ -16,7 +16,13 @@
       <br>
     </div>
     <ng-template #InitiateOrga>
-      <h3>Veterinaire : {{organisationInitial}}</h3><br>
+      <div style="display:flex; flex-wrap:wrap;flex-direction:row;column-gap:20px;">
+        <h3>Veterinaire : {{organisationInitial}}</h3><br>
+        <button mat-stroked-button color="warn" (click)="clearOrga()">
+          <mat-icon>home</mat-icon>
+          Changer d'organisation
+        </button>
+      </div><br>
     </ng-template>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>

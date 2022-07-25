@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { AgendaItem } from '../../../../../../models/rendez-vous.model';
+import { RdvItem } from '../../../../../../models/rendez-vous.model';
 import { PRESTA_SERVICISES } from '../../../../../../models/prestation.model';
 import { Observable } from 'rxjs';
 import { UserService } from '../../../../../../services/user/user.service';
@@ -7,7 +7,6 @@ import { CliniqueService } from '../../../../../../services/clinique/clinique.se
 import { CurrentUser } from '../../../../../../models/user.model';
 import { Clinique, Disponibilites, DisponibiliteItem } from '../../../../../../models/clinique.model';
 import { LoadingViewModel } from '../../../../../default-view/loader-view/loader-view.component';
-import { StateStore } from '../../../../../../services/state/state.store';
 import { CollaborateurService } from '../../../../../../services/collaborateur/collaborateur.service';
 import { Collaborateur } from '../../../../../../models/collaborateur.model';
 import { ClientService } from '../../../../../../services/clients/client.service';
@@ -15,6 +14,7 @@ import { Client } from '../../../../../../models/client.model';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { AjoutClientAlertComponent } from '../../../../../../components/client/ajout-client-alert/ajout-client-alert.component';
+import { RdvManagerService } from '../../../../../../services/collaborateur/rendez-vous/rdv-manager.service';
 
 @Component({
   selector: 'app-rendez-vous-manager-view',
@@ -28,14 +28,14 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
               avec vos client, ajouter des absences ou creer un type d'evenement.";
   agenda_items_types:any = [];
   rdv_prestations:string[] = [];
-  new_agenda_item:AgendaItem = <AgendaItem>{};
-  hDebut!:number;
-  hFin!:number;
-  agenda_item!:AgendaItem;
-  agenda_date!:Date;
-  maxDate:number = 1;
+  new_agenda_item:RdvItem = <RdvItem>{};
+
 
   today = new Date();
+  minDate!:any;
+  maxDate!:any;
+  chosenDate = new Date();
+
   clinique_dispos: DisponibiliteItem[] = [];
   currentUser: CurrentUser = <CurrentUser>{};
   collab_doctors:string[] = [];
@@ -44,20 +44,21 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
     private userService: UserService,
     private cliniqueService: CliniqueService,
     private collaborateurService: CollaborateurService,
-    private clientService: ClientService) { }
+    private clientService: ClientService,
+    private rdvService: RdvManagerService) { }
 
   ngOnInit(): void {
     this.data_load = false;
     this.agenda_items_types = ['RDV', 'Absence', 'Evenement'];
     this.rdv_prestations = PRESTA_SERVICISES;
-    // this.arrHours[0] = 8;
-    // for(let i = 1; i < 12 ; i++) {
-    //   this.arrHours[i] = this.arrHours[i-1] + 1;
-    // }
+    this.minDate = new Date(this.today.getFullYear(), this.today.getMonth(),
+    this.today.getDate(), 8, 0, 0);
+    this.maxDate = new Date(this.today.getFullYear(), this.today.getMonth(),
+    this.today.getDate(), 19, 30, 0);
 
     this.userService.get().then((val: CurrentUser) => {
       this.currentUser = val;
-      this.cliniqueService.getAll(this.currentUser.data.emailpro, 'email')
+      this.cliniqueService.getAll({value:this.currentUser.data.emailpro, query:'email'})
       .subscribe((results:Clinique[]) => {
         if(results && results.length > 0) {
           //const dispo_str = results[0].disponibilite;
@@ -68,10 +69,10 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
         }
       });
       if( this.currentUser &&  this.currentUser.data.fonction !== 'Docteur' ){
-        this.collaborateurService.getAll('Docteur','fonction')
+        this.collaborateurService.getAll({value:'Docteur', query:'fonction'})
         .subscribe((collabs_res:Collaborateur[]) =>{
           this.collab_doctors = collabs_res
-          .filter(c => c.fonction = 'Doctor')
+          .filter(c => c.fonction == 'Docteur')
           .map(c => 'Dr ' + c.nom + ' ' + c.prenom);
         });
       }
@@ -84,24 +85,35 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
 
   }
 
-
   // ngDoCheck():void {
   // }
   new_client() {
     this.dialog.open(AjoutClientAlertComponent, {
-      height: "80%",
+      height: "50%",
       width: "60%",
-      maxWidth: '50em',
-      maxHeight: '80em',
       data: {
         mode: 'creation'
       }
     });
   }
 
+  addRdv(){
+    //TODO service to create rdv
+    // this.rdvService.pu
+  }
 
-  select(event:any) {
-    console.log("date/hour: " + event);
+  select(event:Date, type: "date" | "hour") {
+    if(type == "date") {
+      console.log("date only: " + event);
+      this.chosenDate = event;
+    } else {
+      this.chosenDate = new Date( this.new_agenda_item.datetime.getFullYear(),
+      this.new_agenda_item.datetime.getMonth(),
+      this.new_agenda_item.datetime.getDate(),
+      event.getHours(),event.getMinutes(), event.getSeconds());
+
+      console.log("date with hour only: " + this.chosenDate);
+    }
   }
 
 }

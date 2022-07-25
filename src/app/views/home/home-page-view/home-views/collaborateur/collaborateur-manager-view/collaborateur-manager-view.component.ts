@@ -4,7 +4,6 @@ import { GestionMode, ModelGestion } from '../../../../../../models/common.model
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material/dialog';
 import { CollaborateurSupprimeAlertComponent } from '../../../../../../components/collaborateur/collaborateur-supprime-alert/collaborateur-supprime-alert.component';
-import { StateStore } from '../../../../../../services/state/state.store';
 import { CollaborateurService } from '../../../../../../services/collaborateur/collaborateur.service';
 import { CurrentUser } from '../../../../../../models/user.model';
 import { UserService } from '../../../../../../services/user/user.service';
@@ -29,13 +28,15 @@ export class CollaborateurManagerViewComponent implements OnInit, DoCheck, Loadi
      }
 
   ngOnInit(): void {
-    this.userService.get().then((val: CurrentUser) => {
-      this.currentUser = val;
-    });
-
-    this.collabService.getAll().subscribe((c:Collaborateur[]) => {
+    // this.userService.current().then((val: CurrentUser) => {
+    //   this.currentUser = val;
+    // });
+    this.currentUser = this.userService.current();
+    //console.log("CURRENT USER  => " + this.currentUser);
+    this.collabService.getAll({value:this.currentUser.data.cliniqueref, query:'adr'})
+    .subscribe((c:Collaborateur[]) => {
       if(this.currentUser && c.length > 0){
-        console.log("COLLAB fETCH: " + JSON.stringify((this.currentUser)));
+        console.log("COLLAB FETCH: " + JSON.stringify((this.currentUser)));
         this.user = c.filter(collab => collab.emailpro === this.currentUser.data.emailpro)[0];
         + JSON.stringify(this.user);
         console.log("COLLAB ME: " + JSON.stringify(this.user));

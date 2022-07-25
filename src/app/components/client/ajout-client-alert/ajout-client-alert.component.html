@@ -1,18 +1,18 @@
 
 <h2 mat-dialog-title>Ajouter un nouveux client</h2>
-<mat-dialog-content class="mat-typography" style="padding-top: 6%;">
+<mat-dialog-content class="mat-typography" style="padding-top: 6%;padding-bottom: 6%;">
   <div style="display:table-caption;">
     <div>
       <label for="nom">Nom</label>
-      <input id="nom" type="text" pInputText  [(ngModel)]="new_client.nom"/>
+      <input id="nom" type="text" pInputText  [(ngModel)]="new_client.nom" required/>
     </div>
     <div>
       <label>Prenom</label>
-      <input type="text" pInputText  [(ngModel)]="new_client.prenom"/>
+      <input type="text" pInputText  [(ngModel)]="new_client.prenom" required/>
     </div>
     <div>
-      <label>Prenom</label>
-      <input type="email" pInputText  [(ngModel)]="new_client.email"/>
+      <label>Email</label>
+      <input type="email" pInputText  [(ngModel)]="new_client.email" required/>
     </div>
     <div>
       <label>Telephone</label>

@@ -9,11 +9,16 @@ import { NavigationService } from '../../../services/navigation.service';
 export class HeaderNavSideComponent implements OnInit {
 
   titre = 'Vetservices';
+  logout_visible = true;
   constructor(private navigationService: NavigationService){}
 
   ngOnInit(): void {
+    this.logout_visible = location.href.includes('home');
   }
   redirectTo(route: string) {
     this.navigationService.navigateTo(route);
+  }
+  logout(){
+    this.navigationService.logout();
   }
 }

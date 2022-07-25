@@ -43,7 +43,22 @@ export function getUrl(path:string) {
   }
 }
 
-export interface UpdatePayload {
-  payload:any;
+export interface SearchQuerie {
+  value:string;
+  query:string;
+}
+export interface QueryPayload {
+  value?:string;
+  query?:string;
+  search?:SearchQuerie;
+}
+export interface AdminGetPayload extends QueryPayload {
+  admin:boolean;
+}
+export interface UpdatePayload<T> extends QueryPayload {
+  body:T;
+}
+export interface UpdateAnyPayload extends QueryPayload {
+  body:any;
 }
 

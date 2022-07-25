@@ -27,4 +27,9 @@ export class NavigationService {
     }
   }
 
+  logout(){
+    sessionStorage.removeItem('USER_SESSION');
+    this.navigateTo('CONNETION');
+  }
+
 }
