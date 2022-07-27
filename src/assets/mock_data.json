@@ -19,7 +19,7 @@
   "veterinaire":{
     "vetid":"idv1",
     "nom":"Medicalnimal",
-    "emailSociete": "medicalnimal.info@outlook.fr",
+    "emailsociete": "medicalnimal.info@outlook.fr",
     "numsociete": "123654789",
     "coordBanq":"medicalnimal.FR4310096000701126137612Y48.SOGEFRPP"
   },

@@ -32,6 +32,10 @@ export const endpoints = {
   VETERINAIRE_GET: API_URL + '/veterinaires/get',
   VETERINAIRE_AUNT: API_URL + '/veterinaires/collab/auth',
   COLLABORATEUR_GET: API_URL + '/vet/collaborateurs/get',
+  CLINIQUE_GET: API_URL + '/vet/cliniques/get',
+  ABONNEMENT_GET: API_URL + '/vet/abonnements/get',
+  PRESTATAIRE_GET: API_URL + '/vet/prestations/get',
+  CLIENT_GET: API_URL + '/client/get'
 }
 
 export interface IRequestGet<T> {

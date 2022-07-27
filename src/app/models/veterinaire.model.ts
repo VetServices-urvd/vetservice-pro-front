@@ -33,9 +33,9 @@ export interface SuBscriptionPayload {
 export interface Veterinaire {
   vetid: string;
   nom: string;
-  emailSociete: string;
+  emailsociete: string;
   numsociete: string;
-  coordBanq: string;
+  coordbanq: string;
 }
 export interface CoordonneeBancaireItem {
   intitule: string;
@@ -46,7 +46,7 @@ export class CoordonneeBancaire {
   intitule: string;
   private _iban: string;
   bic: string;
-  
+
   get iban(){
     return this._iban;
   }

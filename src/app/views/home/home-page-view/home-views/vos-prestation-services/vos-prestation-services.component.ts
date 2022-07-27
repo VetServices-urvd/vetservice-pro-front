@@ -29,10 +29,9 @@ export class VosPrestationServicesComponent implements OnInit {
   ngOnInit(): void {
     this.PRESTATION_SELECT = PRESTA_SERVICISES;
     //.map((e:string) => {name:e, code:e});
-    this.userService.get().then((val: CurrentUser) => {
-      this.user = val;
-    });
-    this.prestationService.getAll().subscribe((pres:Prestation[]) => {
+    this.user = this.userService.current();
+    this.prestationService.getAll({value: this.user.data.vetref, query:"ref"})
+    .subscribe((pres:Prestation[]) => {
       this.prestations = pres;
       pres.forEach(e => {
         this.gestionPrestations.push(<ModelGestion<Prestation>>{mode:'consultation', model:e})

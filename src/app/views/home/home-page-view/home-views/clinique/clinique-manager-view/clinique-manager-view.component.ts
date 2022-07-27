@@ -24,10 +24,12 @@ export class CliniqueManagerViewComponent implements OnInit {
     private userService:UserService) { }
 
   ngOnInit(): void {
-    this.userService.get().then((val: CurrentUser) => {
+/*     this.userService.get().then((val: CurrentUser) => {
       this.currentUser = val;
-    });
-    this.cliniqueService.getAll().subscribe((results:Clinique[]) => {
+    }); */
+    this.currentUser = this.userService.current();
+    this.cliniqueService.getAll({value:this.currentUser.data.vetref, query:'ref'})
+    .subscribe((results:Clinique[]) => {
       if(this.currentUser && results.length>0){
         this.clinique_user_gestion = {
           mode:"consultation",

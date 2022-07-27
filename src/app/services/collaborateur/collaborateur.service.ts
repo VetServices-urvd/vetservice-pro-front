@@ -15,6 +15,7 @@ export class CollaborateurService implements IRequestGet<Collaborateur[]> {
   constructor(private http: HttpClient) { }
   url = endpoints.COLLABORATEUR_GET;
   getAll(payload?: QueryPayload):Observable<Collaborateur[]>{
+    console.log("PAYLOAD for API collaborteurs: " + JSON.stringify(payload));
     let req = null;
     if(payload){
       var params = new HttpParams();

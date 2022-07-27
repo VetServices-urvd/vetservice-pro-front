@@ -7,10 +7,9 @@ export interface AuthPayload{
 export interface CurrentUser {
   token:string;
   data: {
-    cliniqueid:string;
     adresse:string;
     vetref:string;
-    //collaborateurid:string;
+    tel:string;
     nom:string;
     emailpro: string;
     fonction:string;

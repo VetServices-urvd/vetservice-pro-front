@@ -22,7 +22,7 @@ export class CompteAbonnementViewComponent implements OnInit {
   vet: Veterinaire = <Veterinaire>{};
   user: CurrentUser = <CurrentUser>{};
   subscription: Abonnement = <Abonnement>{};
-  coord_banq: CoordonneeBancaireItem = <CoordonneeBancaireItem>{};
+  coord_banq?: CoordonneeBancaireItem = <CoordonneeBancaireItem>{};
   gestionCompte!: ModelGestion<Veterinaire>;
 
   constructor(public dialog: MatDialog,
@@ -32,26 +32,28 @@ export class CompteAbonnementViewComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.userService.get().then((val: CurrentUser) => {
-      this.user = val;
-      if(this.user){
-        this.vetService.getAll({value: this.user.data.vetref, query:'id'}).subscribe((v:Veterinaire[]) => {
-          if(v.length > 0){
-            this.vet = v[0];
-            const c = new CoordonneeBancaire();
-            this.coord_banq = this.vet.coordBanq || this.vet.coordBanq===''?c.parse(this.vet.coordBanq, true):this.coord_banq;
-            this.gestionCompte ={ mode:'consultation', model:this.vet}
-          }
-        });
+    this.user = this.userService.current();
+    if(this.user){
+      this.vetService.getAll({value: this.user.data.vetref, query:'id'})
+      .subscribe((v:Veterinaire[]) => {
+        if(v.length > 0){
+          this.vet = v[0];
+          const c = new CoordonneeBancaire();
+          this.coord_banq = this.vet.coordbanq?c.parse(this.vet.coordbanq, true):undefined;
 
-        this.abonnementService.getAll({value: this.user.data.vetref, query:'id'}).subscribe((args: Abonnement[]) => {
-          if(args.length > 0 ){
-            this.subscription = args[0];
-            console.log(this.subscription);
-          }
-        });
-      }
-    });
+          console.log("E vet bank " + JSON.stringify(this.coord_banq));
+          this.gestionCompte ={ mode:'consultation', model:this.vet}
+        }
+      });
+
+      this.abonnementService.getAll({value: this.user.data.vetref, query:'vetref'})
+      .subscribe((args: Abonnement[]) => {
+        if(args.length > 0 ){
+          this.subscription = args[0];
+          console.log(this.subscription);
+        }
+      });
+    }
   }
 
   /**Compte */

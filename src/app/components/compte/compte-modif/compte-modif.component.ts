@@ -21,10 +21,10 @@ export class CompteModifComponent implements OnInit {
 
   ngOnInit(): void {
     const c1 = new CoordonneeBancaire();
-    this.coordBanq = c1.parse(this.vet.coordBanq, true);
+    this.coordBanq = c1.parse(this.vet.coordbanq, true);
     this.modifCompteForm = this.fb.group({
       nom: [this.vet.nom],
-      email: [this.vet.emailSociete],
+      email: [this.vet.emailsociete],
       code: [this.vet.numsociete]
     });
   }
@@ -34,14 +34,14 @@ export class CompteModifComponent implements OnInit {
   }
 
   hasChangeCoordBanq():boolean {
-    return !this.vet.coordBanq.includes(this.coordBanq.intitule) ||
-          !this.vet.coordBanq.includes(this.coordBanq.iban) ||
-          !this.vet.coordBanq.includes(this.coordBanq.bic);
+    return !this.vet.coordbanq.includes(this.coordBanq.intitule) ||
+          !this.vet.coordbanq.includes(this.coordBanq.iban) ||
+          !this.vet.coordbanq.includes(this.coordBanq.bic);
   }
 
   hasChangeVet():boolean {
     const {nom, email, code} = this.modifCompteForm.value;
-    return this.vet.nom !== nom || this.vet.emailSociete !== email
+    return this.vet.nom !== nom || this.vet.emailsociete !== email
           || this.vet.numsociete !== code || this.hasChangeCoordBanq();
   }
 

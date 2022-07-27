@@ -56,9 +56,8 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
     this.maxDate = new Date(this.today.getFullYear(), this.today.getMonth(),
     this.today.getDate(), 19, 30, 0);
 
-    this.userService.get().then((val: CurrentUser) => {
-      this.currentUser = val;
-      this.cliniqueService.getAll({value:this.currentUser.data.emailpro, query:'email'})
+    this.currentUser = this.userService.current();
+    this.cliniqueService.getAll({value:this.currentUser.data.emailpro, query:'email'})
       .subscribe((results:Clinique[]) => {
         if(results && results.length > 0) {
           //const dispo_str = results[0].disponibilite;
@@ -68,20 +67,20 @@ export class RendezVousManagerViewComponent implements OnInit, LoadingViewModel 
           const minute = Number(this.clinique_dispos[0].hDebut.split(':')[1]);
         }
       });
-      if( this.currentUser &&  this.currentUser.data.fonction !== 'Docteur' ){
-        this.collaborateurService.getAll({value:'Docteur', query:'fonction'})
+    if( this.currentUser &&  this.currentUser.data.fonction !== 'Docteur' ){
+      this.collaborateurService.getAll({search:{value:'Docteur', query:'fonction'}})
         .subscribe((collabs_res:Collaborateur[]) =>{
           this.collab_doctors = collabs_res
           .filter(c => c.fonction == 'Docteur')
           .map(c => 'Dr ' + c.nom + ' ' + c.prenom);
         });
-      }
-      this.clientService.getAll().subscribe((cls:Client[]) => {
-        this.client_names = cls
+    }
+    this.clientService.getAll()
+    .subscribe((cls:Client[]) => {
+      this.client_names = cls
         .map(c =>  c.nom + ' ' + c.prenom);
-      });
-      this.data_load = true;
     });
+    this.data_load = true;
 
   }
 
